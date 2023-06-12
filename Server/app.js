@@ -16,7 +16,7 @@ app.get("/", (req, res, next) => {
 });
 
 //List all words in the wordbank
-app.get("/words", (req, res) => {
+app.get("/words", (req, res, next) => {
     res.status(200).send(words);
 });
 
