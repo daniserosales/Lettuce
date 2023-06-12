@@ -1,3 +1,5 @@
+const api = "82247a01-eafb-4f68-9d9c-5843e9601cbd";
+
 const spellingWords = [
   "dog",
   "zoom",
@@ -10,7 +12,7 @@ const spellingWords = [
   "book",
   "towel",
 ];
-// const url = "https://random-word-api.herokuapp.com/word";
+
 const randomWord =
   spellingWords[Math.floor(Math.random() * spellingWords.length)];
 
@@ -19,6 +21,13 @@ const checkBtn = document.querySelector("#checkBtn");
 const resetBtn = document.querySelector("#resetBtn");
 
 const speech = new SpeechSynthesisUtterance();
+const input = document.querySelector("#input");
+
+input.addEventListener("keypress", (e) => {
+  if (e.keyCode === 13) {
+    checkSpelling();
+  }
+});
 
 listenBtn.addEventListener("click", listenWord);
 checkBtn.addEventListener("click", checkSpelling);
@@ -29,6 +38,9 @@ resetBtn.addEventListener("click", function () {
 function checkSpelling() {
   const input = document.querySelector("#input").value;
 
+  if (input === "") {
+    alert("Please type a word");
+  }
   if (input == randomWord) {
     speech.text = "That's right";
     speech.rate = 0.8;
@@ -44,12 +56,11 @@ function checkSpelling() {
 }
 
 function listenWord() {
-  const input = document.querySelector("#input").value;
-
-  speech.text = `Your word is ${randomWord}`;
+  speech.text = `${randomWord}`;
   speech.rate = 0.8;
   speech.lang = "en-US";
   speech.volume = 1;
+  document.querySelector("#input").focus();
 
   window.speechSynthesis.speak(speech);
 }
