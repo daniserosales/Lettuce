@@ -61,12 +61,18 @@ app.post("words/addword/:word", (req, res) => {
 })
 
 //Delete a word from word bank
-
 app.delete("words/deleteword/:word", (req, res) => {
     
     const deleteWord = req.params.word.toLowerCase();//Delete word is defined in API link
+    
+    const wordIndex = words.findIndex((element) => (element === deleteWord))
 
+    if (wordIndex === -1) {
+        res.sendStatus(404)
+    } else {
+        words.splice(wordIndex,1)
+        res.sendStatus(204)
+    }
 })
-
 
 module.exports = app;
