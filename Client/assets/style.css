@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&display=swap');
+
+body {
+    background-color: #E6E3D3;
+}
+
+.logo {
+    text-align:center;
+    display:block;
+}
+
+.header h1 {
+    font-family: 'Alegreya', serif;
+    font-size: 70px;
+    text-align: center;
+    padding: 25px;
+    border: 0;
+    margin: 0;
+    align-self: center;
+}
+
+.welcome-message {
+    margin-top: 50px;
+}
+
+.welcome-message p {
+    font-family: 'Alegreya', serif;
+    font-size: 25px;
+    text-align: center;
+}
+
+.difficulty-title {
+    font-family: 'Alegreya', serif;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.randomiser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+}
+
+.randomiser-button {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+    transition: transform .7s ease-in-out;
+    margin: 70px;
+}
+
+.randomiser-button:hover {
+    transform: scale(1.2);
+}
+
+.randomiser-button img {
+   margin: -20px;
+}
+
+.text-input {
+    text-align: center;
+    padding: 30px;
+}
+
+.text-input input {
+    outline: 0;
+    border-width: 0 0 5px;
+    border-color: black;
+    background: transparent;
+    font-family: 'Alegreya', serif;
+    font-size: 50px;
+    text-align: center;
+}
+
+::placeholder {
+    color: black;
+    opacity: 0.5;
+  }
+
+.submit-button {
+    margin: 60px;
+    background-color: #05930C;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 16px 32px;
+    font-family: 'Alegreya', serif;
+    font-size: 30px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform .3s ease-in-out;
+}
+
+.submit-button:hover {
+    transform: scale(1.1);
+}
+
+.submit-button:active {
+    box-shadow: 0px 4px 8px;
+    transform: scale(.98);
+}
+
+

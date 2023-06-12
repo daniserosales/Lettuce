@@ -3,9 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Spellbound</title>
 </head>
 <body>
-    
+    <section class="logo">
+        <img src="/Client/assets/logo.png" alt="Logo" width="300" height="300">
+    </section>
+
+    <section class="welcome-message">
+        <p>Welcome to Spellbound! Take your spelling to the next level by testing your knowledge on randomly generated words.</p>
+        <p>Simply wave a magic wand from level one, two or three to hear the word you must spell.</p>
+        <p>Enter the spelling of the word to see if you’ve got it correct!</p>
+    </section>
+
+    <h2 class="difficulty-title">Choose Your Difficulty:</h2>
+    <section class="randomiser">
+        <button id ="beginner" class="randomiser-button">
+            <img src="/Client/assets/wand.png" alt="Randomiser button" width="70" height="50"/>
+        </button>
+        <button id ="intermediate" class="randomiser-button">
+            <img src="/Client/assets/wand.png" alt="Randomiser button" width="70" height="50"/>
+            <img src="/Client/assets/wand.png" alt="Randomiser button" width="70" height="50"/>
+        </button>
+        <button id ="hard" class="randomiser-button">
+            <img src="/Client/assets/wand.png" alt="Randomiser button" width="70" height="50"/>
+            <img src="/Client/assets/wand.png" alt="Randomiser button" width="70" height="50"/>
+            <img src="/Client/assets/wand.png" alt="Randomiser button" width="70" height="50"/>
+        </button>
+    </section>
+
+    <section class="text-input">
+        <input id="word" placeholder="Spell word..." type="text" /><br>
+        <button id="submit-word" class="submit-button" type="submit">Check</button>
+    </section>
 </body>
 </html>
