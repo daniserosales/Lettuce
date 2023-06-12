@@ -17,7 +17,11 @@ app.get("/", (req, res, next) => {
 
 //List all words in the wordbank
 app.get("/words", (req, res, next) => {
-    res.status(200).send(words);
+    if (words == undefined) {
+        res.status(404).send();
+        next();
+        } else {
+        res.send(words);
 });
 
 //Send a word from word back randomly
