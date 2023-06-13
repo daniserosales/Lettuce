@@ -19,16 +19,16 @@
 
 const listenBtn = document.querySelector("#beginner");
 const checkBtn = document.querySelector("#submit-word");
-const resetBtn = document.querySelector("#resetBtn");
+// const resetBtn = document.querySelector("#resetBtn");
 
 const speech = new SpeechSynthesisUtterance();
 
 // addWords.addEventListener("click", addWord);
 listenBtn.addEventListener("click", listenWord);
 checkBtn.addEventListener("click", checkSpelling);
-resetBtn.addEventListener("click", function () {
-  location.reload();
-});
+//resetBtn.addEventListener("click", function () {
+ // location.reload();
+//});
 async function randomWord() {
   const response = await fetch("http://localhost:3000/random");
   const data = await response.json();
