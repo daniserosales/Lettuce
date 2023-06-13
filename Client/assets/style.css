@@ -5,19 +5,30 @@ body {
     background-color: #E6E3D3;
 }
 
-.logo {
-    text-align:center;
-    display:block;
+* {
+    box-sizing: border-box;
 }
 
-.header h1 {
-    font-family: 'Alegreya', serif;
-    font-size: 70px;
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+  
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.logo {
     text-align: center;
-    padding: 25px;
-    border: 0;
-    margin: 0;
-    align-self: center;
+    display: block;
+}
+
+.logo img {
+    width: 300px;
+    height: 300px;
 }
 
 .welcome-message {
@@ -28,6 +39,20 @@ body {
     font-family: 'Alegreya', serif;
     font-size: 25px;
     text-align: center;
+}
+
+.score-breakdown {
+    font-family: 'Alegreya', serif;
+    font-size: 20px;
+    text-align: center;
+    list-style: none;
+    padding: 0%;
+}
+
+.score-breakdown p {
+    text-align: center;
+    margin-bottom: 5px;
+    text-decoration: underline;
 }
 
 .difficulty-title {
@@ -42,6 +67,11 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: -10px;
+}
+
+.randomiser img {
+    width: 70px;
+    height: 50px;
 }
 
 .randomiser-button {
@@ -102,4 +132,208 @@ body {
 .submit-button:active {
     box-shadow: 0px 4px 8px;
     transform: scale(.98);
+}
+
+.text-input img {
+    width: 100px;
+    height: 200px;
+}
+
+.end-game-button {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+    transition: transform .7s ease-in-out;
+}
+
+.end-game-button:hover {
+    transform: scale(1.1);
+}
+
+.end-game-button:active {
+    transform: scale(.98);
+}
+
+
+@media only screen and (max-width: 1350px) {
+    .logo img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .welcome-message p {
+        font-size: 20px;
+    }
+
+    .score-breakdown {
+        font-size: 15px;
+    }
+
+    .difficulty-title {
+        font-size: 30px;
+    }
+
+    .randomiser img {
+        width: 60px;
+        height: 40px;
+    }
+    
+    .randomiser-button {
+        margin: 30px;
+    }
+    
+    .text-input input {
+        border-width: 0 0 3px;
+        font-size: 40px;
+    }
+
+    .submit-button {
+        margin: 40px;
+        font-size: 20px;
+    }
+
+    .text-input img {
+        width: 75px;
+        height: 160px;
+    }
+}
+
+@media only screen and (max-width: 1045px) {
+    .column {
+        float: none;
+        width: 100%;
+        padding: 0px;
+    }
+      
+    .row:after {
+        content: none;
+        display: none;
+        clear: none;
+    }
+
+    .difficulty-title {
+        text-align: center;
+        margin-top: 70px;
+    }
+
+    .randomiser img {
+        width: 70px;
+        height: 50px;
+    }
+    
+    .randomiser-button {
+        margin: 50px;
+    }
+
+    .text-input {
+        padding: 50px;
+    }
+    
+    .text-input input {
+        font-size: 30px;
+    }
+
+    .submit-button {
+        margin: 60px;
+    }
+}
+
+@media only screen and (max-width: 543px) {
+    .logo img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .welcome-message p {
+        font-size: 15px;
+    }
+
+    .score-breakdown {
+        font-size: 10px;
+    }
+
+    .difficulty-title {
+        font-size: 20px;
+        margin-top: 40px;
+    }
+
+    .randomiser img {
+        width: 50px;
+        height: 30px;
+    }
+
+    .text-input {
+        padding-top: 10px;
+    }
+    
+    .text-input input {
+        border-width: 0 0 3px;
+        font-size: 25px;
+    }
+
+    .submit-button {
+        margin: 50px;
+        font-size: 20px;
+        padding: 10px 25px;
+    }
+    
+    .text-input img {
+        width: 50px;
+        height: 100px;
+    }
+}
+
+@media only screen and (max-width: 423px) {
+    .logo img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .welcome-message {
+        margin-top: 20px;
+    }
+
+    .welcome-message p {
+        font-size: 12px;
+    }
+
+    .score-breakdown {
+        font-size: 7px;
+    }
+
+    .difficulty-title {
+        font-size: 15px;
+        margin-top: 30px;
+    }
+
+    .randomiser img {
+        width: 50px;
+        height: 30px;
+    }
+    
+    .randomiser-button {
+        margin: 30px;
+    }
+
+    .text-input {
+        text-align: center;
+        padding: 30px;
+    }
+
+    .text-input input {
+        border-width: 0 0 3px;
+        font-size: 20px;
+    }
+
+    .submit-button {
+        margin: 30px;
+        font-size: 15px;
+        padding: 10px 25px;
+    }
+    
+    .text-input img {
+        width: 40px;
+        height: 70px;
+    }
 }
