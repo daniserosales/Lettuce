@@ -1,6 +1,7 @@
 const cors = require("cors");
 const express = require("express");
 const app = express();
+const words = require("./words.json");
 
 app.use(cors());
 app.use(express.json());
@@ -8,7 +9,6 @@ app.use(express.json());
 const logger = require("./logger");
 app.use(logger);
 
-const words = require("./words.json")
 
 //Welcome page for server
 app.get("/", (req, res, next) => {
@@ -22,13 +22,14 @@ app.get("/words", (req, res, next) => {
         next();
         } else {
         res.send(words);
-});
+}});
 
 //Send a word from word back randomly
 // Return the word itself and the link to the pronouncation file from API
 app.get("/random", (req, res) => {
 
-    randIdx = Math.ceil(Math.random() * words.length);
+    randIdx =  Math.floor(Math.random() * words.length)
+    res.send(words[randIdx]);
 
     //Retrieve pronouncation of the word via API
 
