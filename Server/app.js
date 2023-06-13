@@ -28,12 +28,12 @@ app.get("/words", (req, res, next) => {
 // Return the word itself and the link to the pronouncation file from API
 app.get("/random", (req, res) => {
 
-    randIdx =  Math.floor(Math.random() * words.length)
-    res.send(words[randIdx]);
-
+    const randIdx =  Math.floor(Math.random() * words.length)
+    const lowercaseWord = words[randIdx];
+    
     //Retrieve pronouncation of the word via API
 
-    res.status(200).send(words[randIdx])
+    res.status(200).send(lowercaseWord)
 })
 
 //Check if the spelling of a word is correct
