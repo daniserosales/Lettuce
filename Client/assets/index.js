@@ -17,8 +17,8 @@
   
 // const addWords = document.querySelector("#addBtn")
 
-const listenBtn = document.querySelector("#listenBtn");
-const checkBtn = document.querySelector("#checkBtn");
+const listenBtn = document.querySelector("#beginner");
+const checkBtn = document.querySelector("#submit-word");
 const resetBtn = document.querySelector("#resetBtn");
 
 const speech = new SpeechSynthesisUtterance();
