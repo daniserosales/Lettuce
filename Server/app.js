@@ -22,7 +22,7 @@ app.get("/words", (req, res, next) => {
         next();
         } else {
         res.send(words);
-});
+}});
 
 //Send a word from word back randomly
 // Return the word itself and the link to the pronouncation file from API
