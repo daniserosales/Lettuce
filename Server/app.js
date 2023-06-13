@@ -29,7 +29,6 @@ app.get("/words", (req, res, next) => {
 app.get("/random", (req, res) => {
 
     randIdx =  Math.floor(Math.random() * words.length)
-    res.send(words[randIdx]);
 
     //Retrieve pronouncation of the word via API
 
