@@ -29,7 +29,31 @@ app.get("/words", (req, res, next) => {
 app.get("/random", (req, res) => {
 
     randIdx =  Math.floor(Math.random() * words.length)
-    res.send(words[randIdx]);
+
+    res.status(200).send(words[randIdx])
+})
+
+//This function will receive the level requirement via the API endpoint, filter the word bank to keep only the words that matches the level requirement in a shallower copy of the word bank (lvlwords), then pick a random index and return a random word from the lvlwords array.
+
+app.get("/random/:lvl", (req, res) => {
+
+    //save the level in the API endpoint in a variable
+    const level = req.params.lvl
+
+    // filter the complete word bank and keep those words meeting the level requirement in variable lvlwords
+    const lvlwords = words.filter((word => word.level === level))
+
+    //Generate a random index in the lvlwords array
+    randIdx = Math.ceil(Math.random() * lvlwords.length);
+
+    //return the word in response
+    res.status(200).send(lvlwords[randIdx])
+})
+
+
+app.get("/random", (req, res) => {
+
+    randIdx = Math.ceil(Math.random() * words.length);
 
     //Retrieve pronouncation of the word via API
 
