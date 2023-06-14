@@ -45,7 +45,7 @@ async function addDef(e) {
     //   body: JSON.stringify(def)
     // }
     const defi = document.querySelector('#definition');
-    defi.innerHTML = "This is the definition :" + def
+    defi.innerHTML = "Definition:  " + def
 
   } catch (error) {
     // Handle any errors that occur during the API request
@@ -120,7 +120,7 @@ async function listenWord() {
   inputWord = await randomWord();
   speech.text = `Your word is ${inputWord}`;
   speech.rate = 0.8;
-  speech.lang = "en";
+  speech.lang = "en-US";
   speech.volume = 1;
 
   window.speechSynthesis.speak(speech);
