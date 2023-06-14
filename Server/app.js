@@ -28,9 +28,11 @@ app.get("/words", (req, res, next) => {
 // Return the word itself and the link to the pronouncation file from API
 app.get("/random", (req, res) => {
 
-    randIdx =  Math.floor(Math.random() * words.length)
 
-    res.status(200).send(words[randIdx])
+    const randIdx =  Math.floor(Math.random() * words.length)
+    const lowercaseWord = words[randIdx];
+    res.status(200).send(lowercaseWord)
+  
 })
 
 //This function will receive the level requirement via the API endpoint, filter the word bank to keep only the words that matches the level requirement in a shallower copy of the word bank (lvlwords), then pick a random index and return a random word from the lvlwords array.
@@ -48,16 +50,6 @@ app.get("/random/:lvl", (req, res) => {
 
     //return the word in response
     res.status(200).send(lvlwords[randIdx])
-})
-
-
-app.get("/random", (req, res) => {
-
-    randIdx = Math.ceil(Math.random() * words.length);
-
-    //Retrieve pronouncation of the word via API
-
-    res.status(200).send(words[randIdx])
 })
 
 //Check if the spelling of a word is correct
