@@ -8,38 +8,54 @@
     
 </head>
 <body>
-    <section class="logo">
-        <img src="/Client/assets/logo.png" alt="Logo" width="300" height="300">
-    </section>
+    <div class="row">
+        <div class="column">
+            <section class="logo">
+                <img src="/Client/assets/logo.png" alt="Logo">
+            </section>
 
-    <section class="welcome-message">
-        <p>Welcome to Spellbound! Take your spelling to the next level by testing your knowledge on randomly generated words.</p>
-        <p>Simply wave a magic wand from level one, two or three to hear the word you must spell.</p>
-        <p>Enter the spelling of the word to see if you have got it correct!</p>
-    </section>
+            <section class="welcome-message">
+                <p>Welcome to Spellbound! Take your spelling to the next level by testing your knowledge on randomly generated words.</p>
+                <p>To start the game, simply wave a magic wand from level one, two or three to hear the word you must spell.</p>
+                <p>Enter the spelling of the word to see if you have got it correct!</p>
+                <ul class="score-breakdown">
+                    <p>Score breakdown:</p>
+                    <li>Level one: <b>1pt</b></li>
+                    <li>Level two: <b>2pts</b></li>
+                    <li>Level three: <b>3pts</b></li>
+                </ul>
+                <p>End the current game and get your score. Good Luck!</p>
+            </section>
+        </div>
 
-    <h2 class="difficulty-title">Choose Your Difficulty:</h2>
-    <section class="randomiser">
-        <button id ="beginner" class="randomiser-button">
-            <img src="/Client/assets/wand.png" alt="Randomiser button" width="70" height="50"/>
-        </button>
-        <button id ="intermediate" class="randomiser-button">
-            <img src="/Client/assets/wand.png" alt="Randomiser button" width="70" height="50"/>
-            <img src="/Client/assets/wand.png" alt="Randomiser button" width="70" height="50"/>
-        </button>
-        <button id ="hard" class="randomiser-button">
-            <img src="/Client/assets/wand.png" alt="Randomiser button" width="70" height="50"/>
-            <img src="/Client/assets/wand.png" alt="Randomiser button" width="70" height="50"/>
-            <img src="/Client/assets/wand.png" alt="Randomiser button" width="70" height="50"/>
-        </button>
-    </section>
-    <section>
-        <p id="definition"></p>
-    </section>
-    <section class="text-input">
-        <input id="input" placeholder="Spell word..." type="text" /><br>
-        <button id="submit-word" class="submit-button" type="submit">Check</button>
-    </section>
+        <div class="column">
+            <h2 class="difficulty-title">Choose Your Difficulty:</h2>
+            <section class="randomiser">
+                <button id ="beginner" class="randomiser-button">
+                    <img src="/Client/assets/wand.png" alt="Randomiser button" />
+                </button>
+                <button id ="intermediate" class="randomiser-button">
+                    <img src="/Client/assets/wand.png" alt="Randomiser button"/>
+                    <img src="/Client/assets/wand.png" alt="Randomiser button"/>
+                </button>
+                <button id ="hard" class="randomiser-button">
+                    <img src="/Client/assets/wand.png" alt="Randomiser button"/>
+                    <img src="/Client/assets/wand.png" alt="Randomiser button"/>
+                    <img src="/Client/assets/wand.png" alt="Randomiser button"/>
+                </button>
+            </section>
+
+            <section class="text-input">
+                <input id="input" placeholder="Spell word..." type="text" /><br>
+                <button id="submit-word" class="submit-button" type="submit">Check</button><br>
+                <p></p><br>
+                <button id="end-game" class="end-game-button" type="submit">
+                    <img src="/Client/assets/end-game-button.png" alt="End Game button"/>
+                </button>
+            </section>
+        </div>
+    </div>
+
     <script defer src="index.js" ></script>
 </body>
 </html>

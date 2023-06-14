@@ -124,7 +124,7 @@ async function listenWord() {
   inputWord = await randomWord();
   speech.text = `Your word is ${inputWord}`;
   speech.rate = 0.8;
-  speech.lang = "en-US";
+  speech.lang = "en";
   speech.volume = 1;
 
   window.speechSynthesis.speak(speech);
