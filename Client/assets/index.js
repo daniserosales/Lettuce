@@ -24,7 +24,7 @@ const checkBtn = document.querySelector("#submit-word");
 const speech = new SpeechSynthesisUtterance();
 
 // addWords.addEventListener("click", addWord);
-listenBtn.addEventListener("click", listenWord);
+listenBtn.addEventListener("click", listenWord )//addDef);
 checkBtn.addEventListener("click", checkSpelling);
 //resetBtn.addEventListener("click", function () {
  // location.reload();
@@ -32,9 +32,32 @@ checkBtn.addEventListener("click", checkSpelling);
 async function randomWord() {
   const response = await fetch("http://localhost:3000/random");
   const data = await response.json();
-  return data.word
+  const options = {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
 }
-// async function addWord() {
+
+  return data.word.toLowerCase()
+}
+let inputWord;
+// async function addDef() {
+//   const input = await inputWord;
+//     try {
+//     const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`);
+//     const data = await response.json();
+//     console.log(data)
+//     const def = await data.meanings.definitions.definition;
+//     document.getElementById('definition').innerText = def;
+    
+//   } catch (error) {
+//     // Handle any errors that occur during the API request
+//     console.log('An error occurred:', error);
+//   }
+// } 
+  
 //  const input = document.querySelector("#addInput").value;
 //  const checkData = await fetch (`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`)
 //  const response = await  checkData.json();
@@ -79,10 +102,10 @@ async function randomWord() {
 //  }, 4000)}
 //  console.log(response)
 //  }
-let inputWord;
+
  
 async function checkSpelling() {
-  const input = document.querySelector("#input").value;
+  const input = document.querySelector("#input").value.toLowerCase();
  
   if (input == inputWord) {
     speech.text = "That's right";
