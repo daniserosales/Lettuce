@@ -16,13 +16,16 @@ checkBtn.addEventListener("click", checkSpelling);
 
 /// My new Code to disable the textbox, check button and end game button on load
 
-document.querySelector("#input").disabled = true
-checkBtn.disabled = true
+document.querySelector("#input").classList.add("disabled")
+checkBtn.classList.add("disabled")
 // End game button
 
-document.querySelector("#input").style.filter = "grayscale(100%)"
-checkBtn.style.filter = "grayscale(100%)"
-checkBtn.style.opacity = "1"
+// document.querySelector("#input").style.filter = "grayscale(100%)"
+// checkBtn.style.filter = "grayscale(100%)"
+
+// listenBtn.style.opacity = "1"
+// document.querySelector("#input").style.opacity = "0.3"
+// checkBtn.style.opacity = "0.3"
 
 /// End of my new code
 
@@ -156,19 +159,22 @@ function swapEnable() {
 
   for (let i = 0; i < elements.length; i++) {
 
-    elements[i].disabled = !elements[i].disabled
+    const element = elements[i]
 
-    if (elements[i].style.filter === "") {
-      elements[i].style.filter = "grayscale(100%)"
+    if (element.classList.contains("disabled")) {
+      element.classList.remove("disabled");
     } else {
-      elements[i].style.filter = ""
+      element.classList.add("disabled");
     }
 
-    if (elements[i].style.opacity === "1") {
-      elements[i].style.opacity = "0.3"
-    } else if (elements[i].style.opacity === "0.3") {
-      elements[i].style.filter = "1"
-    }
+    // if (!element.style.filter || element.style.filter === "") {
+    //   element.style.filter = "grayscale(100%)"
+    //   element.style.opacity = "0.3"
+    //   element.style.hover = "none";
+    // } else {
+    //   element.style.filter = ""
+    //   element.style.opacity = "1"
+    //   element.style.removeProperty("hover");
+    // }
   }
-
 }
