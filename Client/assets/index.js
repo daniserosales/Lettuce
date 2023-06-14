@@ -1,22 +1,5 @@
 
 
-// const spellingWords = [
-//   "dog",
-//   "zoom",
-//   "lettuce",
-//   "computer",
-//   "laptop",
-//   "table",
-//   "chair",
-//   "friend",
-//   "book",
-//   "towel",
-// ];
-// const url = "https://random-word-api.herokuapp.com/word";
-
-  
-// const addWords = document.querySelector("#addBtn")
-
 const listenBtn = document.querySelector("#beginner");
 const checkBtn = document.querySelector("#submit-word");
 // const resetBtn = document.querySelector("#resetBtn");
