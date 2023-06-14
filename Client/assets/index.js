@@ -8,6 +8,8 @@ const speech = new SpeechSynthesisUtterance();
 
 let inputWord;
 let score = 0;
+let message = document.querySelector("#message");
+let arrRandomWords = [];
 
 // addWords.addEventListener("click", addWord);
 beginnerBtn.addEventListener("click", beginListenWord);
@@ -19,6 +21,17 @@ input.addEventListener("keypress", (e) => {
     checkSpelling();
   }
 });
+
+// const randomiser = document.querySelector("#randomiser");
+// randomiser.addEventListener("click", listen, false);
+
+// function listen(e) {
+//   if (e.target !== e.currentTarget) {
+//     const clickedButton = e.target.id;
+//     alert(`Hello ${clickedButton}`);
+//   }
+// }
+
 //resetBtn.addEventListener("click", function () {
 
 // location.reload();
@@ -97,20 +110,37 @@ async function hardListenWord() {
 // }
 
 async function checkSpelling() {
-  const input = document.querySelector("#input").value;
+  let input = document.querySelector("#input").value.toLowerCase();
+  // let value = document.querySelector("#input").value.trim();
 
-  // if (inputWord === undefined) {
-  //   speech.text = `Please type a word ${inputWord}`;
-  //   speech.rate = 0.8;
-  // }
-  if (input === inputWord) {
+  if (input == "") {
+    alert("Empty");
+    // speech.text = `Please type a word ${inputWord}`;
+    // return value.length == 0
+    //   ? (speech.text = `Please type a word ${inputWord}`)
+    //   : alert("Not empty");
+    // speech.rate = 0.8;
+  }
+  if (input === inputWord.toLowerCase()) {
     speech.text = "That's right";
     speech.rate = 0.8;
-  } else if (input != inputWord) {
-    console.log(`The correct spelling is ${inputWord}`);
+    message.textContent = `That's right! The correct spelling is ${inputWord}.`;
+  } else if (input != inputWord && input.length > 0) {
+    console.log(`The correct spelling is ${inputWord}.`);
     speech.text = `It is not right!  The correct spelling is ${inputWord}`;
     speech.rate = 0.8;
+    message.textContent = `It is not right!  The correct spelling is ${inputWord}.`;
   }
+  setTimeout(() => {
+    message.textContent = "";
+  }, 4000);
+
+  input.textContent = setTimeout(() => {
+    document.querySelector("#input").value = "";
+  }, 4000);
+
+  arrRandomWords.push(inputWord);
+  console.log(arrRandomWords);
 
   window.speechSynthesis.speak(speech);
 }
