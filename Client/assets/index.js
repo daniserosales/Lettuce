@@ -148,13 +148,16 @@ async function checkSpelling() {
   const input = document.querySelector("#input").value.toLowerCase();
  
   if (input == inputWord) {
-    speech.text = "That's right";
-    speech.rate = 0.8;
+    const defi = document.querySelector('#message');
+    defi.innerHTML = "Legend!"
   } else if (input != inputWord) {
-    console.log(`The correct spelling is ${inputWord}`);
-    speech.text = `It is not right!  The correct spelling is ${inputWord}`;
-    speech.rate = 0.8;
-  }
+    const defi = document.querySelector('#message');
+    defi.style.color = "red";
+    defi.innerHTML =`Ooops!  The correct spelling is ${inputWord}`;
+     }
+     setTimeout(() => {
+      const defi = document.querySelector('#message');
+      defi.innerHTML = '';
+    }, 5000);
 
-  window.speechSynthesis.speak(speech);
 }
