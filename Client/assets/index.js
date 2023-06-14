@@ -5,6 +5,8 @@ const intermediateBtn = document.querySelector("#intermediate");
 const hardBtn = document.querySelector("#hard");
 const checkBtn = document.querySelector("#submit-word");
 // const resetBtn = document.querySelector("#resetBtn");
+const inputTextBox = document.querySelector("#input")
+const endGameBtn = document.querySelector("#end-game")
 
 const speech = new SpeechSynthesisUtterance();
 
@@ -18,20 +20,10 @@ checkBtn.addEventListener("click", checkSpelling);
 // location.reload();
 //});
 
-/// My new Code to disable the textbox, check button and end game button on load
-
-document.querySelector("#input").classList.add("disabled")
+// Disable the textbox, check button and end game button on load
+inputTextBox.classList.add("disabled")
 checkBtn.classList.add("disabled")
-// End game button
-
-// document.querySelector("#input").style.filter = "grayscale(100%)"
-// checkBtn.style.filter = "grayscale(100%)"
-
-// listenBtn.style.opacity = "1"
-// document.querySelector("#input").style.opacity = "0.3"
-// checkBtn.style.opacity = "0.3"
-
-/// End of my new code
+endGameBtn.classList.add("disabled")
 
 async function beginRandomWord() {
   const response = await fetch("http://localhost:3000/random/easy");
@@ -75,6 +67,7 @@ async function beginListenWord() {
   speech.volume = 1;
 
   window.speechSynthesis.speak(speech);
+  swapEnable()
 }
 
 async function interRandomWord() {
@@ -117,6 +110,7 @@ async function interListenWord() {
   speech.volume = 1;
 
   window.speechSynthesis.speak(speech);
+  swapEnable()
 }
 
 async function hardRandomWord() {
@@ -159,6 +153,7 @@ async function hardListenWord() {
   speech.volume = 1;
 
   window.speechSynthesis.speak(speech);
+  swapEnable()
 }
 async function checkSpelling() {
   const input = document.querySelector("#input").value.toLowerCase();
@@ -196,10 +191,7 @@ async function listenWord() {
 // Group 2: The three difficulty select button
 function swapEnable() {
 
-  const textbox = document.querySelector("#input")
-
-  const elements = [listenBtn, textbox, checkBtn]
-  // Still need to add the other three elements, intermediate and hard wards button, and end game button
+  const elements = [beginnerBtn, intermediateBtn, hardBtn, inputTextBox, checkBtn, endGameBtn]
 
   for (let i = 0; i < elements.length; i++) {
 
@@ -210,15 +202,5 @@ function swapEnable() {
     } else {
       element.classList.add("disabled");
     }
-
-    // if (!element.style.filter || element.style.filter === "") {
-    //   element.style.filter = "grayscale(100%)"
-    //   element.style.opacity = "0.3"
-    //   element.style.hover = "none";
-    // } else {
-    //   element.style.filter = ""
-    //   element.style.opacity = "1"
-    //   element.style.removeProperty("hover");
-    // }
   }
 }
