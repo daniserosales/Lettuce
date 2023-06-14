@@ -24,7 +24,8 @@ const checkBtn = document.querySelector("#submit-word");
 const speech = new SpeechSynthesisUtterance();
 
 // addWords.addEventListener("click", addWord);
-listenBtn.addEventListener("click", listenWord )//addDef);
+// listenBtn.addEventListener("click", listenWord );
+listenBtn.addEventListener("click", addDef)
 checkBtn.addEventListener("click", checkSpelling);
 //resetBtn.addEventListener("click", function () {
  // location.reload();
@@ -39,24 +40,36 @@ async function randomWord() {
     },
     body: JSON.stringify(data)
 }
-
   return data.word.toLowerCase()
 }
+
 let inputWord;
-// async function addDef() {
-//   const input = await inputWord;
-//     try {
-//     const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`);
-//     const data = await response.json();
-//     console.log(data)
-//     const def = await data.meanings.definitions.definition;
-//     document.getElementById('definition').innerText = def;
-    
-//   } catch (error) {
-//     // Handle any errors that occur during the API request
-//     console.log('An error occurred:', error);
-//   }
-// } 
+
+async function addDef(e) {
+  await listenWord()
+  const input = inputWord;
+  try {
+    const respData = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`);
+    const data = await respData.json();
+    console.log(respData.ok)
+    console.log(data)
+    const def = data[0].meanings[0].definitions[0].definition;
+    // const options = {
+    //   method: "POST",
+    //   headers: {
+    //       "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify(def)
+    // }
+    const defi = document.querySelector('#definition');
+    defi.innerHTML = "This is the definition :" + def
+
+  } catch (error) {
+    // Handle any errors that occur during the API request
+    console.log('An error occurred:', error);
+  }
+}
+
   
 //  const input = document.querySelector("#addInput").value;
 //  const checkData = await fetch (`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`)
