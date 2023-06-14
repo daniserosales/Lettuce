@@ -37,7 +37,7 @@ app.get("/words", (req, res, next) => {
 // Return the word itself and the link to the pronouncation file from API
 app.get("/random", (req, res) => {
 
-    const randIdx =  Math.floor(Math.random() * words.length)
+    randIdx = Math.floor(Math.random() * words.length)
     res.status(200).send(words[randIdx])
   
 })

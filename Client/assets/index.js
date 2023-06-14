@@ -5,6 +5,8 @@ const intermediateBtn = document.querySelector("#intermediate");
 const hardBtn = document.querySelector("#hard");
 const checkBtn = document.querySelector("#submit-word");
 // const resetBtn = document.querySelector("#resetBtn");
+const inputTextBox = document.querySelector("#input")
+const endGameBtn = document.querySelector("#end-game")
 
 const speech = new SpeechSynthesisUtterance();
 
@@ -15,15 +17,21 @@ intermediateBtn.addEventListener("click", addDefInter);
 hardBtn.addEventListener("click", addDefHar);
 checkBtn.addEventListener("click", checkSpelling);
 //resetBtn.addEventListener("click", function () {
- // location.reload();
+// location.reload();
 //});
+
+// Disable the textbox, check button and end game button on load
+inputTextBox.classList.add("disabled")
+checkBtn.classList.add("disabled")
+endGameBtn.classList.add("disabled")
+
 async function beginRandomWord() {
   const response = await fetch("http://localhost:3000/random/easy");
   const data = await response.json();
   const options = {
     method: "POST",
     headers: {
-        "Content-Type": "application/json"
+      "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
 }
@@ -59,6 +67,7 @@ async function beginListenWord() {
   speech.volume = 1;
 
   window.speechSynthesis.speak(speech);
+  swapEnable()
 }
 
 async function interRandomWord() {
@@ -101,6 +110,7 @@ async function interListenWord() {
   speech.volume = 1;
 
   window.speechSynthesis.speak(speech);
+  swapEnable()
 }
 
 async function hardRandomWord() {
@@ -143,10 +153,11 @@ async function hardListenWord() {
   speech.volume = 1;
 
   window.speechSynthesis.speak(speech);
+  swapEnable()
 }
 async function checkSpelling() {
   const input = document.querySelector("#input").value.toLowerCase();
- 
+
   if (input == inputWord) {
     const defi = document.querySelector('#message');
     defi.innerHTML = "Legend!"
@@ -160,4 +171,21 @@ async function checkSpelling() {
       defi.innerHTML = '';
     }, 5000);
 
+  swapEnable()
+}
+
+function swapEnable() {
+
+  const elements = [beginnerBtn, intermediateBtn, hardBtn, inputTextBox, checkBtn, endGameBtn]
+
+  for (let i = 0; i < elements.length; i++) {
+
+    const element = elements[i]
+
+    if (element.classList.contains("disabled")) {
+      element.classList.remove("disabled");
+    } else {
+      element.classList.add("disabled");
+    }
+  }
 }
