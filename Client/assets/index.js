@@ -1,6 +1,8 @@
 
 
-const listenBtn = document.querySelector("#beginner");
+const beginnerBtn = document.querySelector("#beginner");
+const intermediateBtn = document.querySelector("#intermediate");
+const hardBtn = document.querySelector("#hard");
 const checkBtn = document.querySelector("#submit-word");
 // const resetBtn = document.querySelector("#resetBtn");
 
@@ -8,7 +10,9 @@ const speech = new SpeechSynthesisUtterance();
 
 // addWords.addEventListener("click", addWord);
 // listenBtn.addEventListener("click", listenWord );
-listenBtn.addEventListener("click", addDef)
+beginnerBtn.addEventListener("click", addDefBeg)
+intermediateBtn.addEventListener("click", addDefInter);
+hardBtn.addEventListener("click", addDefHar);
 checkBtn.addEventListener("click", checkSpelling);
 //resetBtn.addEventListener("click", function () {
 // location.reload();
@@ -29,8 +33,8 @@ checkBtn.classList.add("disabled")
 
 /// End of my new code
 
-async function randomWord() {
-  const response = await fetch("http://localhost:3000/random");
+async function beginRandomWord() {
+  const response = await fetch("http://localhost:3000/random/easy");
   const data = await response.json();
   const options = {
     method: "POST",
@@ -44,8 +48,8 @@ async function randomWord() {
 
 let inputWord;
 
-async function addDef(e) {
-  await listenWord()
+async function addDefBeg(e) {
+  await beginListenWord()
   const input = inputWord;
   try {
     const respData = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`);
@@ -53,13 +57,48 @@ async function addDef(e) {
     console.log(respData.ok)
     console.log(data)
     const def = data[0].meanings[0].definitions[0].definition;
-    // const options = {
-    //   method: "POST",
-    //   headers: {
-    //       "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify(def)
-    // }
+    const defi = document.querySelector('#definition');
+    defi.innerHTML = "Definition:  " + def
+
+  } catch (error) {
+    // Handle any errors that occur during the API request
+    console.log('An error occurred:', error);
+  }
+}
+  
+async function beginListenWord() {
+  const input = document.querySelector("#input").value;
+  inputWord = await beginRandomWord();
+  speech.text = `Your word is ${inputWord}`;
+  speech.rate = 0.8;
+  speech.lang = "en-US";
+  speech.volume = 1;
+
+  window.speechSynthesis.speak(speech);
+}
+
+async function interRandomWord() {
+  const response = await fetch("http://localhost:3000/random/inter");
+  const data = await response.json();
+  const options = {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+}
+  return data.word.toLowerCase()
+}
+
+async function addDefInter(e) {
+  await interListenWord()
+  const input = inputWord;
+  try {
+    const respData = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`);
+    const data = await respData.json();
+    console.log(respData.ok)
+    console.log(data)
+    const def = data[0].meanings[0].definitions[0].definition;
     const defi = document.querySelector('#definition');
     defi.innerHTML = "Definition:  " + def
 
@@ -69,53 +108,58 @@ async function addDef(e) {
   }
 }
 
-  
-//  const input = document.querySelector("#addInput").value;
-//  const checkData = await fetch (`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`)
-//  const response = await  checkData.json();
+async function interListenWord() {
+  const input = document.querySelector("#input").value;
+  inputWord = await interRandomWord();
+  speech.text = `Your word is ${inputWord}`;
+  speech.rate = 0.8;
+  speech.lang = "en-US";
+  speech.volume = 1;
 
-//  console.log(response)
-//  const options = {
-//   method: "POST",
-//   headers: {
-//       "Content-Type": "application/json"
-//   },
-//   body: JSON.stringify(response)
-// }
-//  if (checkData.status == 200){
-//   document.querySelector("#addInput").value = "";
-//     alert("Word(s) have been added");
-//  } else  {alert("word doesn't exists. Please write another")
-//  setTimeout(() => {
-//   alert.textContent = ""
-// }, 4000)}
-// console.log(response)
-// }
+  window.speechSynthesis.speak(speech);
+}
 
-// async function addWord() {
-//   const input = document.querySelector("#addInput").value;
-//   const checkData = await fetch (`http://localhost:3000`)
-//   const response = await  checkData.json();
+async function hardRandomWord() {
+  const response = await fetch("http://localhost:3000/random/hard");
+  const data = await response.json();
+  const options = {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+}
+  return data.word.toLowerCase()
+}
 
-//   console.log(response)
-//   const options = {
-//    method: "POST",
-//    headers: {
-//        "Content-Type": "application/json"
-//    },
-//    body: JSON.stringify(response)
-//  }
-//   if (checkData.status == 200){
-//    document.querySelector("#addInput").value = "";
-//      alert("Word(s) have been added");
-//   } else  {alert("word doesn't exists. Please write another")
-//   setTimeout(() => {
-//    alert.textContent = ""
-//  }, 4000)}
-//  console.log(response)
-//  }
+async function addDefHar(e) {
+  await hardListenWord()
+  const input = inputWord;
+  try {
+    const respData = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`);
+    const data = await respData.json();
+    console.log(respData.ok)
+    console.log(data)
+    const def = data[0].meanings[0].definitions[0].definition;
+    const defi = document.querySelector('#definition');
+    defi.innerHTML = "Definition:  " + def
 
+  } catch (error) {
+    // Handle any errors that occur during the API request
+    console.log('An error occurred:', error);
+  }
+}
 
+async function hardListenWord() {
+  const input = document.querySelector("#input").value;
+  inputWord = await hardRandomWord();
+  speech.text = `Your word is ${inputWord}`;
+  speech.rate = 0.8;
+  speech.lang = "en-US";
+  speech.volume = 1;
+
+  window.speechSynthesis.speak(speech);
+}
 async function checkSpelling() {
   const input = document.querySelector("#input").value.toLowerCase();
 
