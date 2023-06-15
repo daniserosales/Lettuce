@@ -40,6 +40,7 @@ inputTextBox.addEventListener("keyup", (event) => {
 inputTextBox.classList.add("disabled")
 checkBtn.classList.add("disabled")
 endGameBtn.classList.add("disabled")
+fetch("http://localhost:3000/reset");
 
 async function randomWord(level) {
 
@@ -274,6 +275,11 @@ newGame.onclick = function() {
 function endGame(e) {
   // Pop-up appears
   modal.style.display = "block";
+
+  const defi = document.querySelector('#definition');
+  defi.textContent = '';
+  const message = document.querySelector('#message');
+  message.textContent = '';
 
   // Creating list with incorrect words from array:
   let content = document.querySelector("#content");

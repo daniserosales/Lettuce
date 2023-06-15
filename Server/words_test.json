@@ -1,0 +1,13 @@
+[
+    {"word": "colour", "level": "easy"},
+    {"word": "treble", "level": "easy"},
+    {"word": "mirror", "level": "easy"},
+
+    {"word": "spectrum", "level": "inter"},
+    {"word": "physics", "level": "inter"},
+    {"word": "reflection", "level": "inter"},
+
+    {"word": "metaphor", "level": "hard"},
+    {"word": "counterpoint", "level": "hard"},
+    {"word": "microscope", "level": "hard"}
+]
