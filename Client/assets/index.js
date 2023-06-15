@@ -261,6 +261,9 @@ newGame.onclick = function() {
 function endGame(e) {
   // Pop-up appears
  
+ modal.style.display = "block";
+ const addend1 = score;
+ const addednd2 = allScore;
 
   // Creating list with incorrect words from array:
   let content = document.querySelector("#content");
