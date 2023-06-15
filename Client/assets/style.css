@@ -292,6 +292,14 @@ body {
         width: 100px;
         height: 100px;
     }
+    .text-input .definition {
+        font-family: 'Alegreya', serif;
+        font-size: 23px;
+        color: black;
+        padding: 20px;
+        height: 200px;
+        margin-top: -40px;
+    }
 }
 
 @media only screen and (max-width: 1350px) {
