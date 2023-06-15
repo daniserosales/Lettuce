@@ -2,47 +2,37 @@ const beginnerBtn = document.querySelector("#beginner");
 const intermediateBtn = document.querySelector("#intermediate");
 const hardBtn = document.querySelector("#hard");
 const checkBtn = document.querySelector("#submit-word");
-// const resetBtn = document.querySelector("#resetBtn");
+const exitBtn = document.querySelector("#end-game");
+const newGameBtn = document.querySelector("#new-game");
 
 const speech = new SpeechSynthesisUtterance();
 
 let inputWord;
 let score = 0;
+let allScore = 0;
 let message = document.querySelector("#message");
-let arrRandomWords = [];
+let arrIncorrectWords = [];
+let lvlDifficulty;
+let scoreCard = document.querySelector("#popup");
+let displayScore = document.querySelector("#displayScore");
 
-// addWords.addEventListener("click", addWord);
 beginnerBtn.addEventListener("click", beginListenWord);
 intermediateBtn.addEventListener("click", interListenWord);
 hardBtn.addEventListener("click", hardListenWord);
 checkBtn.addEventListener("click", checkSpelling);
+exitBtn.addEventListener("click", endGame);
+newGameBtn.addEventListener("click", newGame);
+
 input.addEventListener("keypress", (e) => {
   if (e.keyCode === 13) {
     checkSpelling();
   }
 });
 
-// const randomiser = document.querySelector("#randomiser");
-// randomiser.addEventListener("click", listen, false);
-
-// function listen(e) {
-//   if (e.target !== e.currentTarget) {
-//     const clickedButton = e.target.id;
-//     alert(`Hello ${clickedButton}`);
-//   }
-// }
-
-//resetBtn.addEventListener("click", function () {
-
-// location.reload();
-
-//});
-
 // Beginner section
 async function beginRandomWord() {
   const response = await fetch(`http://localhost:3000/random/begin`);
   const data = await response.json();
-
   return data.word;
 }
 
@@ -54,6 +44,7 @@ async function beginListenWord() {
   speech.volume = 1;
 
   document.querySelector("#input").focus();
+  lvlDifficulty = "begin";
 
   window.speechSynthesis.speak(speech);
   console.log(inputWord);
@@ -63,7 +54,6 @@ async function beginListenWord() {
 async function interRandomWord() {
   const response = await fetch(`http://localhost:3000/random/inter`);
   const data = await response.json();
-
   return data.word;
 }
 
@@ -75,6 +65,7 @@ async function interListenWord() {
   speech.volume = 1;
 
   document.querySelector("#input").focus();
+  lvlDifficulty = "inter";
 
   window.speechSynthesis.speak(speech);
   console.log(inputWord);
@@ -84,7 +75,6 @@ async function interListenWord() {
 async function hardRandomWord() {
   const response = await fetch(`http://localhost:3000/random/hard`);
   const data = await response.json();
-
   return data.word;
 }
 
@@ -96,51 +86,88 @@ async function hardListenWord() {
   speech.volume = 1;
 
   document.querySelector("#input").focus();
+  lvlDifficulty = "hard";
 
   window.speechSynthesis.speak(speech);
   console.log(inputWord);
 }
 
-// async function checkSpelling() {
-//   const input = document.querySelector("#word").value;
-
-//   if (input === inputWord) {
-//     return data.word;
-//   }
-// }
-
 async function checkSpelling() {
   let input = document.querySelector("#input").value.toLowerCase();
-  // let value = document.querySelector("#input").value.trim();
 
-  if (input == "") {
-    alert("Empty");
-    // speech.text = `Please type a word ${inputWord}`;
-    // return value.length == 0
-    //   ? (speech.text = `Please type a word ${inputWord}`)
-    //   : alert("Not empty");
-    // speech.rate = 0.8;
-  }
+  // Checking for correct word
   if (input === inputWord.toLowerCase()) {
     speech.text = "That's right";
     speech.rate = 0.8;
     message.textContent = `That's right! The correct spelling is ${inputWord}.`;
+
+    // Adding score for correct word to player's score and overall score
+    if (lvlDifficulty === "begin") {
+      score += 1;
+      allScore += 1;
+    } else if (lvlDifficulty === "inter") {
+      score += 2;
+      allScore += 2;
+    } else if (lvlDifficulty === "hard") {
+      score += 3;
+      allScore += 3;
+    }
+
+    // Checking for uncorrect word
   } else if (input != inputWord && input.length > 0) {
-    console.log(`The correct spelling is ${inputWord}.`);
-    speech.text = `It is not right!  The correct spelling is ${inputWord}`;
+    console.log(`The correct spelling is ${inputWord.split("")}.`);
+    speech.text = `It is not right!`;
     speech.rate = 0.8;
     message.textContent = `It is not right!  The correct spelling is ${inputWord}.`;
+
+    // Adding score only for overall score
+    if (lvlDifficulty === "begin") {
+      allScore += 1;
+    } else if (lvlDifficulty === "inter") {
+      allScore += 2;
+    } else if (lvlDifficulty === "hard") {
+      allScore += 3;
+    }
+
+    // Adding incorrect word to arr
+    arrIncorrectWords.push(inputWord);
+    console.log(arrIncorrectWords);
   }
+
+  // Message dissappears
   setTimeout(() => {
     message.textContent = "";
-  }, 4000);
+  }, 2500);
 
+  // Input word dissappears
   input.textContent = setTimeout(() => {
     document.querySelector("#input").value = "";
-  }, 4000);
+  }, 2500);
 
-  arrRandomWords.push(inputWord);
-  console.log(arrRandomWords);
+  console.log(arrIncorrectWords);
 
   window.speechSynthesis.speak(speech);
+}
+
+function endGame(e) {
+  // Pop-up appears
+  scoreCard.classList.add("open-popup");
+
+  // Creating list with incorrect words from array:
+  let content = document.querySelector("#content");
+  let list = "<ul>";
+  for (i = 0; i < arrIncorrectWords.length; i++) {
+    {
+      list += "<li>" + arrIncorrectWords[i] + "</li>";
+    }
+    list += "</ul>";
+
+    displayScore.textContent = `${score}/${allScore}`;
+    content.innerHTML = list;
+  }
+}
+
+function newGame() {
+  scoreCard.classList.remove("open-popup");
+  location.reload();
 }
