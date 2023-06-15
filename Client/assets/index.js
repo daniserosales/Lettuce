@@ -17,7 +17,7 @@ beginnerBtn.addEventListener("click", addDefBeg)
 intermediateBtn.addEventListener("click", addDefInter);
 hardBtn.addEventListener("click", addDefHar);
 checkBtn.addEventListener("click", checkSpelling);
-//endGameBtn.addEventListener("click", endGame)
+endGameBtn.addEventListener("click", endGame)
 playAgainBtn.addEventListener("click", playAgain)
 
 //resetBtn.addEventListener("click", function () {
@@ -197,6 +197,23 @@ function swapEnable() {
     }
   }
 }
+function endGame(e) {
+  // Pop-up appears
+  scoreCard.classList.add("open-popup");
+
+  // Creating list with incorrect words from array:
+  let content = document.querySelector("#content");
+  let list = "<ul>";
+  for (i = 0; i < arrIncorrectWords.length; i++) {
+    {
+      list += "<li>" + arrIncorrectWords[i] + "</li>";
+    }
+    list += "</ul>";
+
+    displayScore.textContent = `${score}/${allScore}`;
+    content.innerHTML = list;
+  }
+}
 
 async function  playAgain () {
   // const defi = document.querySelector('#endImg');
@@ -206,5 +223,6 @@ async function  playAgain () {
   // document.body.appendChild(defi);
 location.reload()
 window.scrollTo(0, 0);
+scoreCard.classList.remove("open-popup");
    
 }
