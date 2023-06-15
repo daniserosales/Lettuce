@@ -247,13 +247,22 @@ function swapEnable() {
     }
   }
 }
-async function endGame(e) {
+
+
+const modal = document.getElementById("score-modal");
+const newGame = document.getElementById("new-game");
+
+
+newGame.onclick = function() {
+  location.reload();
+  window.scrollTo(0, 0);
+}
+
+function endGame(e) {
   // Pop-up appears
-  await arrIncorrectWords
-  scoreCard.classList.add("open-popup");
  
-  const addend1 = score;
-  const addednd2 = allScore
+
+  // Creating list with incorrect words from array:
   let content = document.querySelector("#content");
   let list = "<ul>";
   const results = document.querySelector("#results")

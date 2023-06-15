@@ -39,12 +39,13 @@ body {
 }
 
 .logo img {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
 }
 
 .welcome-message {
     margin-top: 50px;
+    padding-left: 40px;
 }
 
 .welcome-message p {
@@ -71,14 +72,14 @@ body {
     font-family: 'Henny Penny', cursive;
     font-size: 40px;
     text-align: center;
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
 .randomiser {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -10px;
+    margin-top: -17px;
 }
 
 .randomiser img {
@@ -134,11 +135,10 @@ body {
 
 .text-input p {
     font-family: 'Alegreya', serif;
-    font-size: 50px;
+    font-size: 35px;
     font-weight: 800;
     color: green;
     margin: 0%;
-    margin-bottom: 30px;
 }
 
 .submit-button {
@@ -164,11 +164,6 @@ body {
     transform: scale(.98);
 }
 
-.text-input img {
-    width: 100px;
-    height: 200px;
-}
-
 .end-game-button {
     border: none;
     cursor: pointer;
@@ -177,9 +172,16 @@ body {
     transition: transform .7s ease-in-out;
     position: fixed;
     bottom: 0;
-    right: 20px;
-   min-width: 10px;
-  }
+    right: 0;
+    margin-bottom: -10px;
+    margin-right: 10px;
+    min-width: 10px;
+}
+
+.end-game-button img {
+    width: 100px;
+    height: 150px;
+}
 
 .end-game-button:hover {
     transform: scale(1.1);
@@ -194,7 +196,6 @@ body {
     appearance: none;
     background-color: transparent;
     transition: transform .7s ease-in-out;
-
 }
 
 .new-game-button:hover {
@@ -204,29 +205,13 @@ body {
 .new-game-button:active {
     transform: scale(.98);
 }
-/* This is with Anastasija's code */
+
 .score-card {
     font-family: 'Alegreya', serif;
     font-weight: 800;
     text-align: center;
-    border-style: solid;
-    border-radius: 5px;
-    border-width: 3px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    width: 40%;
     margin: auto;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.1);
-    visibility: hidden;
-    transition: transform 0.4s, top 0.4s;
 }
-/* This is Anastasija's code */
-.open-popup {
-    visibility: visible;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(1);
-  }
 
 .score-card h3 {
     font-size: 40px;
@@ -240,7 +225,9 @@ body {
 .score-card ul {
     font-size: 25px;
     list-style: none;
-    padding: 0%;
+    padding-left: 0%;
+    overflow: auto;
+    max-height: 170px;
 }
 
 .score-card img {
@@ -249,6 +236,63 @@ body {
     height: 150px;
 }
 
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    display: block;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 700px;
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+@media only screen and (max-width: 1600px) {
+    .score-card h3 {
+        font-size: 30px;
+    }
+
+    .score-card p {
+        font-size: 25px;
+    }
+
+    .score-card ul {
+        font-size: 20px;
+        height: 150px;
+    }
+
+    .score-card img {
+        width: 100px;
+        height: 100px;
+    }
+}
 
 @media only screen and (max-width: 1350px) {
     .logo img {
@@ -290,6 +334,11 @@ body {
         font-size: 40px;
     }
 
+    .end-game-button img {
+        width: 80px;
+        height: 130px;
+    }
+
     .submit-button {
         margin: 40px;
         font-size: 20px;
@@ -298,23 +347,6 @@ body {
     .text-input img {
         width: 75px;
         height: 160px;
-    }
-
-    .score-card h3 {
-        font-size: 30px;
-    }
-
-    .score-card p {
-        font-size: 25px;
-    }
-
-    .score-card ul {
-        font-size: 20px;
-    }
-
-    .score-card img {
-        width: 100px;
-        height: 100px;
     }
     
 }
@@ -330,6 +362,10 @@ body {
         content: none;
         display: none;
         clear: none;
+    }
+
+    .welcome-message {
+        padding-left: 0px;
     }
 
     .difficulty-title {
@@ -356,6 +392,11 @@ body {
 
     .submit-button {
         margin: 60px;
+    }
+
+    .end-game-button img {
+        width: 50px;
+        height: 100px;
     }
 
     .score-card {
@@ -431,6 +472,7 @@ body {
 
     .score-card ul {
         font-size: 15px;
+        height: 100px;
     }
 
     .score-card img {
@@ -473,6 +515,8 @@ body {
 
     .text-input .definition {
         font-size: 12px;
+        margin: -30px;
+        height: 160px;
     }
 
     .text-input {
@@ -514,6 +558,7 @@ body {
 
     .score-card ul {
         font-size: 10px;
+        height: 50px;
     }
 
     .score-card img {
@@ -522,3 +567,4 @@ body {
     }
     
 }
+

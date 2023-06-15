@@ -19,8 +19,8 @@
             
             <section class="welcome-message">
                 <p>Welcome to Spellbound! Take your spelling to the next level by testing your knowledge on randomly generated words.</p>
-                <p>To start the game, simply wave a magic wand from level one, two or three to hear the word you must spell.</p>
-                <p>Enter the spelling of the word to see if you have got it correct!</p>
+                <p>To start the game, simply wave a magic wand from level one, two or three to hear the word you must spell and see it's corresponding definition.</p>
+                <p>Enter the spelling of the word to check if you have got it correct!</p>
                 <ul class="score-breakdown">
                     <p>Score breakdown:</p>
                     <li>Level one: <b>1pt</b></li>
@@ -60,7 +60,8 @@
         </div>
     </div>
 
-    <!-- SECTION TO DISPLAY SCORE WITH INCORRECT WORDS-->
+    <!-- SECTION TO DISPLAY SCORE WITH INCORRECT WORDS
+
     <section id="popup" class="score-card">
         <h3>Your score is:</h3>
         <h3 id="displayScore"></h3>
@@ -71,7 +72,24 @@
         <button id="new-game" class="new-game-button" type="submit">
             <img id="newImg" src="/Client/assets/new-game-button.png" alt="New Game button"/>
         </button>
-    </section>
+    </section>-->
+
+    <div id="score-modal" class="modal">
+        <div class="modal-content">
+            <section id="popup" class="score-card">
+                <h3>Your score is:</h3>
+                <h3 id="displayScore"></h3>
+                <p id="results">Here is a list of words you got incorrect:</p>
+                <ul id="content">
+                    
+                </ul>
+                <button id="new-game" class="new-game-button" type="submit">
+                    <img id="newImg" src="/Client/assets/new-game-button.png" alt="New Game button"/>
+                </button>
+            </section>
+        </div>
+    </div>
+
 
     <script defer src="index.js" ></script>
 </body>
