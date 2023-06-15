@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Alegreya&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
 
 body {
     background-color: #E6E3D3;
@@ -62,7 +63,7 @@ body {
 }
 
 .difficulty-title {
-    font-family: 'Beautiful Magic';
+    font-family: 'Henny Penny', cursive;
     font-size: 40px;
     text-align: center;
     margin-top: 70px;
@@ -106,8 +107,9 @@ body {
     font-family: 'Alegreya', serif;
     font-size: 25px;
     color: black;
-    font-weight: 400;
-    padding: 30px;
+    padding: 20px;
+    height: 200px;
+    margin-top: -40px;
 }
 
 .text-input input {
@@ -372,6 +374,8 @@ body {
 
     .text-input .definition {
         font-size: 15px;
+        margin-top: 20px;
+        margin-bottom: -20px;
     }
 
     .text-input {
