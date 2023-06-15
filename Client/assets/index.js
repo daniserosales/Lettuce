@@ -26,11 +26,13 @@ hardBtn.addEventListener("click", addDefHar);
 checkBtn.addEventListener("click", checkSpelling);
 endGameBtn.addEventListener("click", endGame)
 playAgainBtn.addEventListener("click", playAgain)
+
 inputTextBox.addEventListener("keypress", (e) => {
   if (e.keyCode === 13) {
     checkSpelling();
   }
 });
+
 //resetBtn.addEventListener("click", function () {
 // location.reload();
 //});
@@ -42,7 +44,6 @@ endGameBtn.classList.add("disabled")
 fetch("http://localhost:3000/reset");
 
 async function randomWord(level) {
-
 
   //  Clear definition and right/wrong message
   const defi = document.querySelector('#definition');
@@ -328,6 +329,7 @@ function turnOnWard(level) {
       break;
   }
 }
+
 
 async function  playAgain () {
   // const defi = document.querySelector('#endImg');
