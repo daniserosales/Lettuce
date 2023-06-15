@@ -241,3 +241,16 @@ location.reload()
 window.scrollTo(0, 0);
    
 }
+
+const endGame = document.getElementById("end-game");
+const modal = document.getElementById("score-modal");
+const newGame = document.getElementById("new-game");
+
+endGame.onclick = function() {
+  modal.style.display = "block";
+}
+newGame.onclick = function() {
+  location.reload();
+  window.scrollTo(0, 0);
+}
+
