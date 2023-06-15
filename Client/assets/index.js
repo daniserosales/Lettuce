@@ -44,6 +44,13 @@ fetch("http://localhost:3000/reset");
 
 async function randomWord(level) {
 
+
+  //  Clear definition and right/wrong message
+  const defi = document.querySelector('#definition');
+  defi.textContent = '';
+  const message = document.querySelector('#message');
+  message.textContent = '';
+
   switch (level) {
     case "begin":
       response = await fetch("http://localhost:3000/random/easy");
