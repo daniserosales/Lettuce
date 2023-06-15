@@ -209,12 +209,25 @@ body {
     transform: scale(.98);
 }
 
+/* This is with Anastasija's code */
+
 .score-card {
     font-family: 'Alegreya', serif;
     font-weight: 800;
     text-align: center;
     margin: auto;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
 }
+/* This is Anastasija's code */
+.open-popup {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
 
 .score-card h3 {
     font-size: 40px;

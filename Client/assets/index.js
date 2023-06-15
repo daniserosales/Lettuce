@@ -10,14 +10,21 @@ const endGameBtn = document.querySelector("#end-game")
 const playAgainBtn = document.querySelector("#new-game")
 
 const speech = new SpeechSynthesisUtterance();
-
+let inputWord;
+let score = 0;
+let allScore = 0;
+let message = document.querySelector("#message");
+let arrIncorrectWords = [];
+let lvlDifficulty;
+let scoreCard = document.querySelector("#popup");
+let displayScore = document.querySelector("#displayScore");
 // addWords.addEventListener("click", addWord);
 // listenBtn.addEventListener("click", listenWord );
 beginnerBtn.addEventListener("click", addDefBeg)
 intermediateBtn.addEventListener("click", addDefInter);
 hardBtn.addEventListener("click", addDefHar);
 checkBtn.addEventListener("click", checkSpelling);
-//endGameBtn.addEventListener("click", endGame)
+endGameBtn.addEventListener("click", endGame)
 playAgainBtn.addEventListener("click", playAgain)
 
 //resetBtn.addEventListener("click", function () {
@@ -66,8 +73,6 @@ async function randomWord(level) {
 
 }
 
-let inputWord;
-
 async function addDefBeg(e) {
 
   await beginListenWord()
@@ -96,6 +101,8 @@ async function beginListenWord() {
     speech.rate = 0.8;
     speech.lang = "en-US";
     speech.volume = 1;
+    document.querySelector("#input").focus();
+    lvlDifficulty = "begin";
 
     window.speechSynthesis.speak(speech);
     swapEnable()
@@ -130,6 +137,9 @@ async function interListenWord() {
     speech.rate = 0.8;
     speech.lang = "en-US";
     speech.volume = 1;
+
+    document.querySelector("#input").focus();
+    lvlDifficulty = "inter";
 
     window.speechSynthesis.speak(speech);
     swapEnable()
@@ -166,6 +176,9 @@ async function hardListenWord() {
     speech.lang = "en-US";
     speech.volume = 1;
 
+    document.querySelector("#input").focus();
+    lvlDifficulty = "hard";
+
     window.speechSynthesis.speak(speech);
     swapEnable()
     turnOnWard("hard")
@@ -181,13 +194,35 @@ async function checkSpelling() {
     defi.style.color = "green";
     defi.innerHTML = "Legend!"
     inputTextBox.value = ""
+    if (lvlDifficulty === "begin") {
+      score += 1;
+      allScore += 1;
+    } else if (lvlDifficulty === "inter") {
+      score += 2;
+      allScore += 2;
+    } else if (lvlDifficulty === "hard") {
+      score += 3;
+      allScore += 3;
+    }
     
   } else if (input != inputWord) {
     const defi = document.querySelector('#message');
     defi.style.color = "red";
     inputTextBox.value = ""
     defi.innerHTML =`Ooops!  The correct spelling is ${inputWord}`;
-     }
+    if (lvlDifficulty === "begin") {
+      allScore += 1;
+    } else if (lvlDifficulty === "inter") {
+      allScore += 2;
+    } else if (lvlDifficulty === "hard") {
+      allScore += 3;
+    }
+
+    // Adding incorrect word to arr
+    arrIncorrectWords.push(inputWord);
+    console.log(arrIncorrectWords);
+  }
+     
      setTimeout(() => {
       const defi = document.querySelector('#message');
       defi.innerHTML = '';
@@ -195,6 +230,7 @@ async function checkSpelling() {
 
   swapEnable()
 }
+
 
 function swapEnable() {
 
@@ -211,6 +247,23 @@ function swapEnable() {
       element.classList.add("disabled");
       element.classList.remove("turn-On");
     }
+  }
+}
+function endGame(e) {
+  // Pop-up appears
+  scoreCard.classList.add("open-popup");
+
+  // Creating list with incorrect words from array:
+  let content = document.querySelector("#content");
+  let list = "<ul>";
+  for (i = 0; i < arrIncorrectWords.length; i++) {
+    {
+      list += "<li>" + arrIncorrectWords[i] + "</li>";
+    }
+    list += "</ul>";
+
+    displayScore.textContent = `${score}/${allScore}`;
+    content.innerHTML = list;
   }
 }
 
@@ -239,6 +292,7 @@ async function  playAgain () {
   // document.body.appendChild(defi);
 location.reload()
 window.scrollTo(0, 0);
+scoreCard.classList.remove("open-popup");
    
 }
 
