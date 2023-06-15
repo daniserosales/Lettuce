@@ -159,36 +159,21 @@ async function checkSpelling() {
   const input = document.querySelector("#input").value.toLowerCase();
 
   if (input == inputWord) {
-    speech.text = "That's right";
-    speech.rate = 0.8;
+    const defi = document.querySelector('#message');
+    defi.innerHTML = "Legend!"
   } else if (input != inputWord) {
-    console.log(`The correct spelling is ${inputWord}`);
-    speech.text = `It is not right!  The correct spelling is ${inputWord}`;
-    speech.rate = 0.8;
-  }
-
-  window.speechSynthesis.speak(speech);
+    const defi = document.querySelector('#message');
+    defi.style.color = "red";
+    defi.innerHTML =`Ooops!  The correct spelling is ${inputWord}`;
+     }
+     setTimeout(() => {
+      const defi = document.querySelector('#message');
+      defi.innerHTML = '';
+    }, 5000);
 
   swapEnable()
 }
 
-async function listenWord() {
-  const input = document.querySelector("#input").value;
-  inputWord = await randomWord();
-  speech.text = `Your word is ${inputWord}`;
-  speech.rate = 0.8;
-  speech.lang = "en-US";
-  speech.volume = 1;
-
-  window.speechSynthesis.speak(speech);
-
-  swapEnable();
-
-}
-
-// This function will swap enabling/disabling two groups of elements in the HTML so that they are mutually exclusive
-// Group 1: textbox, Check button and End Game button
-// Group 2: The three difficulty select button
 function swapEnable() {
 
   const elements = [beginnerBtn, intermediateBtn, hardBtn, inputTextBox, checkBtn, endGameBtn]
