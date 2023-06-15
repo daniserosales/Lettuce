@@ -27,6 +27,11 @@ checkBtn.addEventListener("click", checkSpelling);
 endGameBtn.addEventListener("click", endGame)
 playAgainBtn.addEventListener("click", playAgain)
 
+// Press enter will trigger checkSpelling()
+inputTextBox.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") checkSpelling();
+});
+
 //resetBtn.addEventListener("click", function () {
 // location.reload();
 //});
@@ -34,6 +39,7 @@ playAgainBtn.addEventListener("click", playAgain)
 // Disable the textbox, check button and end game button on load
 inputTextBox.classList.add("disabled")
 checkBtn.classList.add("disabled")
+endGameBtn.classList.add("disabled")
 
 async function randomWord(level) {
 
@@ -204,7 +210,7 @@ async function checkSpelling() {
       score += 3;
       allScore += 3;
     }
-    
+
   } else if (input != inputWord) {
     const defi = document.querySelector('#message');
     defi.style.color = "red";
@@ -222,13 +228,18 @@ async function checkSpelling() {
     arrIncorrectWords.push(inputWord);
     console.log(arrIncorrectWords);
   }
-     
-     setTimeout(() => {
-      const defi = document.querySelector('#message');
-      defi.innerHTML = '';
-    }, 5000);
+
+  setTimeout(() => {
+    const defi = document.querySelector('#message');
+    defi.innerHTML = '';
+  }, 5000);
 
   swapEnable()
+
+  if (endGameBtn.classList.contains("disabled")) {
+    endGameBtn.classList.remove("disabled");
+  }
+
 }
 
 
@@ -301,24 +312,8 @@ async function  playAgain () {
   // document.getElementById("endImg").style.width = "700px"
   // document.getElementById("endImg").style.height = "300px"
   // document.body.appendChild(defi);
-location.reload()
-window.scrollTo(0, 0);
-scoreCard.classList.remove("open-popup");
-   
+  location.reload()
+  window.scrollTo(0, 0);
+  scoreCard.classList.remove("open-popup");
+  await fetch("http://localhost:3000/reset");
 }
-<<<<<<< HEAD
-
-const endGame = document.getElementById("end-game");
-const modal = document.getElementById("score-modal");
-const newGame = document.getElementById("new-game");
-
-// endGame.onclick = function() {
-//   modal.style.display = "block";
-// }
-// newGame.onclick = function() {
-//   location.reload();
-//   window.scrollTo(0, 0);
-// }
-
-=======
->>>>>>> 5f486acf8cbf4643f44fa61bfa01ec8dff39a931
