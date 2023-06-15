@@ -290,12 +290,20 @@ body {
 
     .score-card ul {
         font-size: 20px;
-        height: 150px;
+        max-height: 150px;
     }
 
     .score-card img {
         width: 100px;
         height: 100px;
+    }
+    .text-input .definition {
+        font-family: 'Alegreya', serif;
+        font-size: 23px;
+        color: black;
+        padding: 20px;
+        height: 200px;
+        margin-top: -40px;
     }
 }
 
@@ -477,7 +485,7 @@ body {
 
     .score-card ul {
         font-size: 15px;
-        height: 100px;
+        max-height: 100px;
     }
 
     .score-card img {
@@ -563,7 +571,7 @@ body {
 
     .score-card ul {
         font-size: 10px;
-        height: 50px;
+        max-height: 50px;
     }
 
     .score-card img {
