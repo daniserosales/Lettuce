@@ -44,12 +44,13 @@ body {
 }
 
 .logo img {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
 }
 
 .welcome-message {
     margin-top: 50px;
+    padding-left: 40px;
 }
 
 .welcome-message p {
@@ -76,14 +77,14 @@ body {
     font-family: 'Henny Penny', cursive;
     font-size: 40px;
     text-align: center;
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
 .randomiser {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -10px;
+    margin-top: -17px;
 }
 
 .randomiser img {
@@ -139,11 +140,10 @@ body {
 
 .text-input p {
     font-family: 'Alegreya', serif;
-    font-size: 50px;
+    font-size: 35px;
     font-weight: 800;
     color: green;
     margin: 0%;
-    margin-bottom: 30px;
 }
 
 .submit-button {
@@ -169,11 +169,6 @@ body {
     transform: scale(.98);
 }
 
-.text-input img {
-    width: 100px;
-    height: 200px;
-}
-
 .end-game-button {
     border: none;
     cursor: pointer;
@@ -182,8 +177,15 @@ body {
     transition: transform .7s ease-in-out;
     position: fixed;
     bottom: 0;
-    width: 190%;
+    right: 0;
+    margin-bottom: -10px;
+    margin-right: 10px;
     min-width: 10px;
+}
+
+.end-game-button img {
+    width: 100px;
+    height: 150px;
 }
 
 .end-game-button:hover {
@@ -209,25 +211,12 @@ body {
     transform: scale(.98);
 }
 
-/* This is with Anastasija's code */
-
 .score-card {
     font-family: 'Alegreya', serif;
     font-weight: 800;
     text-align: center;
     margin: auto;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.1);
-    visibility: hidden;
-    transition: transform 0.4s, top 0.4s;
 }
-/* This is Anastasija's code */
-.open-popup {
-    visibility: visible;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(1);
-  }
 
 .score-card h3 {
     font-size: 40px;
@@ -243,7 +232,7 @@ body {
     list-style: none;
     padding-left: 0%;
     overflow: auto;
-    height: 170px;
+    max-height: 170px;
 }
 
 .score-card img {
@@ -350,6 +339,11 @@ body {
         font-size: 40px;
     }
 
+    .end-game-button img {
+        width: 80px;
+        height: 130px;
+    }
+
     .submit-button {
         margin: 40px;
         font-size: 20px;
@@ -373,6 +367,10 @@ body {
         content: none;
         display: none;
         clear: none;
+    }
+
+    .welcome-message {
+        padding-left: 0px;
     }
 
     .difficulty-title {
@@ -399,6 +397,11 @@ body {
 
     .submit-button {
         margin: 60px;
+    }
+
+    .end-game-button img {
+        width: 50px;
+        height: 100px;
     }
 
     .score-card {
@@ -517,6 +520,8 @@ body {
 
     .text-input .definition {
         font-size: 12px;
+        margin: -30px;
+        height: 160px;
     }
 
     .text-input {
@@ -567,3 +572,4 @@ body {
     }
     
 }
+
