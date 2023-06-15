@@ -243,9 +243,20 @@ function swapEnable() {
     }
   }
 }
+
+
+const modal = document.getElementById("score-modal");
+const newGame = document.getElementById("new-game");
+
+
+newGame.onclick = function() {
+  location.reload();
+  window.scrollTo(0, 0);
+}
+
 function endGame(e) {
   // Pop-up appears
-  scoreCard.classList.add("open-popup");
+  modal.style.display = "block";
 
   // Creating list with incorrect words from array:
   let content = document.querySelector("#content");
@@ -272,16 +283,3 @@ window.scrollTo(0, 0);
 scoreCard.classList.remove("open-popup");
    
 }
-
-const endGame = document.getElementById("end-game");
-const modal = document.getElementById("score-modal");
-const newGame = document.getElementById("new-game");
-
-endGame.onclick = function() {
-  modal.style.display = "block";
-}
-newGame.onclick = function() {
-  location.reload();
-  window.scrollTo(0, 0);
-}
-
