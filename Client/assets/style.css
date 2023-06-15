@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Alegreya&display=swap');
 
 body {
@@ -13,14 +12,20 @@ body {
     pointer-events: none;
     opacity: 0.3;
     filter: grayscale(100%)
-  }
+}
+
+.perm-disabled {
+    pointer-events: none;
+    opacity: 0.3;
+    filter: grayscale(100%)
+}
 
 .column {
     float: left;
     width: 50%;
     padding: 10px;
 }
-  
+
 .row:after {
     content: "";
     display: table;
@@ -94,7 +99,7 @@ body {
 }
 
 .randomiser-button img {
-   margin: -20px;
+    margin: -20px;
 }
 
 .text-input {
@@ -123,7 +128,7 @@ body {
 ::placeholder {
     color: black;
     opacity: 0.5;
-  }
+}
 
 .text-input p {
     font-family: 'Alegreya', serif;
@@ -185,7 +190,7 @@ body {
     border-style: solid;
     border-radius: 5px;
     border-width: 3px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     width: 40%;
     margin: auto;
 }
@@ -234,7 +239,7 @@ body {
         width: 60px;
         height: 40px;
     }
-    
+
     .randomiser-button {
         margin: 30px;
     }
@@ -242,7 +247,7 @@ body {
     .text-input .definition {
         font-size: 20px;
     }
-    
+
     .text-input input {
         border-width: 0 0 3px;
         font-size: 40px;
@@ -265,15 +270,15 @@ body {
     .score-card h3 {
         font-size: 30px;
     }
-    
+
     .score-card p {
         font-size: 25px;
     }
-    
+
     .score-card ul {
         font-size: 20px;
     }
-    
+
     .score-card img {
         width: 100px;
         height: 100px;
@@ -286,7 +291,7 @@ body {
         width: 100%;
         padding: 0px;
     }
-      
+
     .row:after {
         content: none;
         display: none;
@@ -302,7 +307,7 @@ body {
         width: 70px;
         height: 50px;
     }
-    
+
     .randomiser-button {
         margin: 50px;
     }
@@ -310,7 +315,7 @@ body {
     .text-input {
         padding: 50px;
     }
-    
+
     .text-input input {
         font-size: 30px;
     }
@@ -355,7 +360,7 @@ body {
     .text-input {
         padding-top: 10px;
     }
-    
+
     .text-input input {
         border-width: 0 0 3px;
         font-size: 25px;
@@ -366,7 +371,7 @@ body {
         font-size: 20px;
         padding: 10px 25px;
     }
-    
+
     .text-input img {
         width: 50px;
         height: 100px;
@@ -383,15 +388,15 @@ body {
     .score-card h3 {
         font-size: 25px;
     }
-    
+
     .score-card p {
         font-size: 20px;
     }
-    
+
     .score-card ul {
         font-size: 15px;
     }
-    
+
     .score-card img {
         width: 100px;
         height: 100px;
@@ -425,7 +430,7 @@ body {
         width: 50px;
         height: 30px;
     }
-    
+
     .randomiser-button {
         margin: 30px;
     }
@@ -453,7 +458,7 @@ body {
         font-size: 15px;
         padding: 10px 25px;
     }
-    
+
     .text-input img {
         width: 40px;
         height: 70px;
@@ -466,15 +471,15 @@ body {
     .score-card h3 {
         font-size: 20px;
     }
-    
+
     .score-card p {
         font-size: 15px;
     }
-    
+
     .score-card ul {
         font-size: 10px;
     }
-    
+
     .score-card img {
         width: 50px;
         height: 50px;
