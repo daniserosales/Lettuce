@@ -69,6 +69,7 @@ async function randomWord(level) {
 let inputWord;
 
 async function addDefBeg(e) {
+
   await beginListenWord()
   const input = inputWord;
   try {
@@ -98,6 +99,7 @@ async function beginListenWord() {
 
     window.speechSynthesis.speak(speech);
     swapEnable()
+    turnOnWard("begin")
   }
 }
 
@@ -131,6 +133,7 @@ async function interListenWord() {
 
     window.speechSynthesis.speak(speech);
     swapEnable()
+    turnOnWard("inter")
   }
 }
 
@@ -165,6 +168,7 @@ async function hardListenWord() {
 
     window.speechSynthesis.speak(speech);
     swapEnable()
+    turnOnWard("hard")
   }
 }
 
@@ -200,11 +204,30 @@ function swapEnable() {
 
     const element = elements[i]
 
-    if (element.classList.contains("disabled")) {
+    if (element.classList.contains("disabled") || element.classList.contains("turn-On")) {
       element.classList.remove("disabled");
+      element.classList.remove("turn-On");
     } else {
       element.classList.add("disabled");
+      element.classList.remove("turn-On");
     }
+  }
+}
+
+function turnOnWard(level) {
+  switch (level) {
+    case "begin":
+      beginnerBtn.classList.remove("disabled");
+      beginnerBtn.classList.add("turn-On");
+      break;
+    case "inter":
+      intermediateBtn.classList.remove("disabled");
+      intermediateBtn.classList.add("turn-On");
+      break;
+    case "hard":
+      hardBtn.classList.remove("disabled");
+      hardBtn.classList.add("turn-On");
+      break;
   }
 }
 

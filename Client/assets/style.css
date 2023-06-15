@@ -21,6 +21,11 @@ body {
     filter: grayscale(100%)
 }
 
+.turn-On {
+    pointer-events: none;
+}
+
+
 .column {
     float: left;
     width: 50%;
