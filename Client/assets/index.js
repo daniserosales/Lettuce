@@ -282,6 +282,8 @@ newGame.onclick = function() {
 function endGame(e) {
   // Pop-up appears
   modal.style.display = "block";
+  const addend1 = score;
+  const addednd2 = allScore;
 
   const defi = document.querySelector('#definition');
   defi.textContent = '';
