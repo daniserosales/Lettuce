@@ -177,11 +177,9 @@ body {
     transition: transform .7s ease-in-out;
     position: fixed;
     bottom: 0;
-  width: 190%;
-  min-width: 10px;
- 
-
-}
+    right: 20px;
+   min-width: 10px;
+  }
 
 .end-game-button:hover {
     transform: scale(1.1);
