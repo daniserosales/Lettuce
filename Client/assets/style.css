@@ -227,7 +227,7 @@ body {
     list-style: none;
     padding-left: 0%;
     overflow: auto;
-    height: 170px;
+    max-height: 170px;
 }
 
 .score-card img {
