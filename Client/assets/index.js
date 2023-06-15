@@ -7,6 +7,7 @@ const checkBtn = document.querySelector("#submit-word");
 // const resetBtn = document.querySelector("#resetBtn");
 const inputTextBox = document.querySelector("#input")
 const endGameBtn = document.querySelector("#end-game")
+const playAgainBtn = document.querySelector("#new-game")
 
 const speech = new SpeechSynthesisUtterance();
 
@@ -16,6 +17,9 @@ beginnerBtn.addEventListener("click", addDefBeg)
 intermediateBtn.addEventListener("click", addDefInter);
 hardBtn.addEventListener("click", addDefHar);
 checkBtn.addEventListener("click", checkSpelling);
+//endGameBtn.addEventListener("click", endGame)
+playAgainBtn.addEventListener("click", playAgain)
+
 //resetBtn.addEventListener("click", function () {
 // location.reload();
 //});
@@ -160,10 +164,14 @@ async function checkSpelling() {
 
   if (input == inputWord) {
     const defi = document.querySelector('#message');
+    defi.style.color = "green";
     defi.innerHTML = "Legend!"
+    inputTextBox.value = ""
+    
   } else if (input != inputWord) {
     const defi = document.querySelector('#message');
     defi.style.color = "red";
+    inputTextBox.value = ""
     defi.innerHTML =`Ooops!  The correct spelling is ${inputWord}`;
      }
      setTimeout(() => {
@@ -188,4 +196,14 @@ function swapEnable() {
       element.classList.add("disabled");
     }
   }
+}
+
+async function  playAgain () {
+  // const defi = document.querySelector('#endImg');
+  // defi.src = "Play Again@3x.png";
+  // document.getElementById("endImg").style.width = "700px"
+  // document.getElementById("endImg").style.height = "300px"
+  // document.body.appendChild(defi);
+location.reload()
+   
 }

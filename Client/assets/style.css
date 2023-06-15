@@ -168,8 +168,14 @@ body {
     border: none;
     cursor: pointer;
     appearance: none;
-    background-color: inherit;
+    background-color: transparent;
     transition: transform .7s ease-in-out;
+    position: fixed;
+    bottom: 0;
+  width: 190%;
+  min-width: 10px;
+ 
+
 }
 
 .end-game-button:hover {
@@ -179,7 +185,22 @@ body {
 .end-game-button:active {
     transform: scale(.98);
 }
+.new-game-button {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: transparent;
+    transition: transform .7s ease-in-out;
 
+}
+
+.new-game-button:hover {
+    transform: scale(1.1);
+}
+
+.new-game-button:active {
+    transform: scale(.98);
+}
 .score-card {
     font-family: 'Alegreya', serif;
     font-weight: 800;
@@ -280,6 +301,7 @@ body {
         width: 100px;
         height: 100px;
     }
+    
 }
 
 @media only screen and (max-width: 1045px) {
@@ -483,4 +505,5 @@ body {
         width: 50px;
         height: 50px;
     }
+    
 }
