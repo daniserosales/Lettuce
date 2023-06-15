@@ -8,12 +8,15 @@
     
 </head>
 <body>
+    <button id="end-game" class="end-game-button" type="submit">
+        <img src="/Client/assets/end-game-button.png" alt="End Game button" height="100px"/>
+    </button>
     <div class="row">
         <div class="column">
             <section class="logo">
                 <img src="/Client/assets/logo.png" alt="Logo">
             </section>
-
+            
             <section class="welcome-message">
                 <p>Welcome to Spellbound! Take your spelling to the next level by testing your knowledge on randomly generated words.</p>
                 <p>To start the game, simply wave a magic wand from level one, two or three to hear the word you must spell.</p>
@@ -46,15 +49,14 @@
             </section>
 
             <section class="text-input">
-                <p class="definition" id="definition">Definition: This is for testing purposes</p> <!--ELEMENT TO DISPLAY WORD DEFINITION-->
+                <p class="definition" id="definition" class="fade-in-text">Definition: This is for testing purposes</p> <!--ELEMENT TO DISPLAY WORD DEFINITION-->
                 <input id="input" placeholder="Spell word..." type="text" /><br>
                 <button id="submit-word" class="submit-button" type="submit">Check</button><br>
                 <p></p><br>
                 <p id="message"></p>
-                <button id="end-game" class="end-game-button" type="submit">
-                    <img src="/Client/assets/end-game-button.png" alt="End Game button"/>
-                </button>
+                
             </section>
+            
         </div>
     </div>
 
@@ -69,8 +71,8 @@
             <li>Square</li>
             <li>Triangle</li>
         </ul>
-        <button id="new-game" class="end-game-button" type="submit">
-            <img src="/Client/assets/new-game-button.png" alt="New Game button"/>
+        <button id="new-game" class="new-game-button" type="submit">
+            <img id="newImg" src="/Client/assets/new-game-button.png" alt="New Game button"/>
         </button>
     </section>
 
