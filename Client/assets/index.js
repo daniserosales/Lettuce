@@ -26,7 +26,11 @@ hardBtn.addEventListener("click", addDefHar);
 checkBtn.addEventListener("click", checkSpelling);
 endGameBtn.addEventListener("click", endGame)
 playAgainBtn.addEventListener("click", playAgain)
-
+inputTextBox.addEventListener("keypress", (e) => {
+  if (e.keyCode === 13) {
+    checkSpelling();
+  }
+});
 //resetBtn.addEventListener("click", function () {
 // location.reload();
 //});
@@ -256,21 +260,37 @@ newGame.onclick = function() {
 
 function endGame(e) {
   // Pop-up appears
-  modal.style.display = "block";
+ 
+ modal.style.display = "block";
+ const addend1 = score;
+ const addednd2 = allScore;
 
   // Creating list with incorrect words from array:
   let content = document.querySelector("#content");
   let list = "<ul>";
+  const results = document.querySelector("#results")
+  if (addend1===addednd2) {
+  results.innerHTML = "Why does Voldemort prefer Twitter over Facebook? Because he has followers. Not Friends. Well done!"
+  displayScore.innerHTML = `${score}/${allScore}`
+  } else {
+  results.innerHTML = "Oh, spellbook gone wrong! I had higher hopes than this."
+  displayScore.innerHTML = `${score}/${allScore}`
+  content.innerHTML = list;
+}
+  // Creating list with incorrect words from array:
+ 
   for (i = 0; i < arrIncorrectWords.length; i++) {
     {
       list += "<li>" + arrIncorrectWords[i] + "</li>";
     }
     list += "</ul>";
 
-    displayScore.textContent = `${score}/${allScore}`;
+    displayScore.innerHTML = `${score}/${allScore}`;
     content.innerHTML = list;
-  }
+   }
 }
+
+
 
 async function  playAgain () {
   // const defi = document.querySelector('#endImg');
