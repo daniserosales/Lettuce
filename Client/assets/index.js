@@ -27,19 +27,43 @@ playAgainBtn.addEventListener("click", playAgain)
 // Disable the textbox, check button and end game button on load
 inputTextBox.classList.add("disabled")
 checkBtn.classList.add("disabled")
-endGameBtn.classList.add("disabled")
 
-async function beginRandomWord() {
-  const response = await fetch("http://localhost:3000/random/easy");
-  const data = await response.json();
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-}
-  return data.word.toLowerCase()
+async function randomWord(level) {
+
+  switch (level) {
+    case "begin":
+      response = await fetch("http://localhost:3000/random/easy");
+      break;
+    case "inter":
+      response = await fetch("http://localhost:3000/random/inter");
+      break;
+    case "hard":
+      response = await fetch("http://localhost:3000/random/hard");
+      break;
+  }
+
+  //Introduce error check to catch word list empty error
+  if (response.status === 200) {
+    const data = await response.json();
+    return data.word.toLowerCase()
+  } else if (response.status === 404) {
+    alert(`No more words from this difficulty. Please choose another difficulty.`);
+    switch (level) {
+      case "begin":
+        beginnerBtn.classList.add("perm-disabled")
+        return -1
+      case "inter":
+        intermediateBtn.classList.add("perm-disabled")
+        return -1
+      case "hard":
+        hardBtn.classList.add("perm-disabled")
+        return -1
+    }
+  } else {
+    alert(`Network error. Please try again.`);
+    return -1
+  }
+
 }
 
 let inputWord;
@@ -61,30 +85,20 @@ async function addDefBeg(e) {
     console.log('An error occurred:', error);
   }
 }
-  
+
 async function beginListenWord() {
   const input = document.querySelector("#input").value;
-  inputWord = await beginRandomWord();
-  speech.text = `Your word is ${inputWord}`;
-  speech.rate = 0.8;
-  speech.lang = "en-US";
-  speech.volume = 1;
+  inputWord = await randomWord("begin");
 
-  window.speechSynthesis.speak(speech);
-  swapEnable()
-}
+  if (inputWord != -1) {
+    speech.text = `Your word is ${inputWord}`;
+    speech.rate = 0.8;
+    speech.lang = "en-US";
+    speech.volume = 1;
 
-async function interRandomWord() {
-  const response = await fetch("http://localhost:3000/random/inter");
-  const data = await response.json();
-  const options = {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-}
-  return data.word.toLowerCase()
+    window.speechSynthesis.speak(speech);
+    swapEnable()
+  }
 }
 
 async function addDefInter(e) {
@@ -107,27 +121,17 @@ async function addDefInter(e) {
 
 async function interListenWord() {
   const input = document.querySelector("#input").value;
-  inputWord = await interRandomWord();
-  speech.text = `Your word is ${inputWord}`;
-  speech.rate = 0.8;
-  speech.lang = "en-US";
-  speech.volume = 1;
+  inputWord = await randomWord("inter");
 
-  window.speechSynthesis.speak(speech);
-  swapEnable()
-}
+  if (inputWord != -1) {
+    speech.text = `Your word is ${inputWord}`;
+    speech.rate = 0.8;
+    speech.lang = "en-US";
+    speech.volume = 1;
 
-async function hardRandomWord() {
-  const response = await fetch("http://localhost:3000/random/hard");
-  const data = await response.json();
-  const options = {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-}
-  return data.word.toLowerCase()
+    window.speechSynthesis.speak(speech);
+    swapEnable()
+  }
 }
 
 async function addDefHar(e) {
@@ -150,20 +154,26 @@ async function addDefHar(e) {
 
 async function hardListenWord() {
   const input = document.querySelector("#input").value;
-  inputWord = await hardRandomWord();
-  speech.text = `Your word is ${inputWord}`;
-  speech.rate = 0.8;
-  speech.lang = "en-US";
-  speech.volume = 1;
+  inputWord = await randomWord("hard");
 
-  window.speechSynthesis.speak(speech);
-  swapEnable()
+  if (inputWord != -1) {
+    inputWord = await randomWord("hard");
+    speech.text = `Your word is ${inputWord}`;
+    speech.rate = 0.8;
+    speech.lang = "en-US";
+    speech.volume = 1;
+
+    window.speechSynthesis.speak(speech);
+    swapEnable()
+  }
 }
+
 async function checkSpelling() {
   const input = document.querySelector("#input").value.toLowerCase();
 
   if (input == inputWord) {
     const defi = document.querySelector('#message');
+    defi.style.color = "green";
     defi.style.color = "green";
     defi.innerHTML = "Legend!"
     inputTextBox.value = ""
@@ -184,7 +194,7 @@ async function checkSpelling() {
 
 function swapEnable() {
 
-  const elements = [beginnerBtn, intermediateBtn, hardBtn, inputTextBox, checkBtn, endGameBtn]
+  const elements = [beginnerBtn, intermediateBtn, hardBtn, inputTextBox, checkBtn]
 
   for (let i = 0; i < elements.length; i++) {
 
