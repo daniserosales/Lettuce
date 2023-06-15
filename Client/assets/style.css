@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
 
 body {
     background-color: #E6E3D3;
@@ -67,7 +68,7 @@ body {
 }
 
 .difficulty-title {
-    font-family: 'Beautiful Magic';
+    font-family: 'Henny Penny', cursive;
     font-size: 40px;
     text-align: center;
     margin-top: 70px;
@@ -111,8 +112,9 @@ body {
     font-family: 'Alegreya', serif;
     font-size: 25px;
     color: black;
-    font-weight: 400;
-    padding: 30px;
+    padding: 20px;
+    height: 200px;
+    margin-top: -40px;
 }
 
 .text-input input {
@@ -171,8 +173,14 @@ body {
     border: none;
     cursor: pointer;
     appearance: none;
-    background-color: inherit;
+    background-color: transparent;
     transition: transform .7s ease-in-out;
+    position: fixed;
+    bottom: 0;
+  width: 190%;
+  min-width: 10px;
+ 
+
 }
 
 .end-game-button:hover {
@@ -182,7 +190,22 @@ body {
 .end-game-button:active {
     transform: scale(.98);
 }
+.new-game-button {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: transparent;
+    transition: transform .7s ease-in-out;
 
+}
+
+.new-game-button:hover {
+    transform: scale(1.1);
+}
+
+.new-game-button:active {
+    transform: scale(.98);
+}
 .score-card {
     font-family: 'Alegreya', serif;
     font-weight: 800;
@@ -283,6 +306,7 @@ body {
         width: 100px;
         height: 100px;
     }
+    
 }
 
 @media only screen and (max-width: 1045px) {
@@ -355,6 +379,8 @@ body {
 
     .text-input .definition {
         font-size: 15px;
+        margin-top: 20px;
+        margin-bottom: -20px;
     }
 
     .text-input {
@@ -484,4 +510,5 @@ body {
         width: 50px;
         height: 50px;
     }
+    
 }
