@@ -205,5 +205,6 @@ async function  playAgain () {
   // document.getElementById("endImg").style.height = "300px"
   // document.body.appendChild(defi);
 location.reload()
+window.scrollTo(0, 0);
    
 }
