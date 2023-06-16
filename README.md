@@ -53,6 +53,9 @@ Play the game according to on screen instructions.
 
 ## Credits
 
-This project is a collorbative work from four members.
+This project is a collorbative work from four members in alphabatical order.
 
-Anastasija, Danise, Mahir and YF (links to github profile)
+- [Anastasija](https://github.com/Nastasia777)
+- [Danise](https://github.com/daniserosales)
+- [Mahir](https://github.com/mahirjalil)
+- [YF](https://github.com/yf-chau)
