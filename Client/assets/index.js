@@ -298,7 +298,7 @@ function endGame(e) {
   results.innerHTML = "Why does Voldemort prefer Twitter over Facebook? Because he has followers. Not Friends. Well done!"
   displayScore.innerHTML = `${score}/${allScore}`
   } else {
-  results.innerHTML = "Oh, spellbook gone wrong! I had higher hopes than this. These are your incorrectly spelt words:"
+  results.innerHTML = "Oh, spellbook gone wrong! I had higher hopes than this. These are words to improve:"
   displayScore.innerHTML = `${score}/${allScore}`
   content.innerHTML = list;
 }
