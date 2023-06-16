@@ -1,4 +1,7 @@
-<img src="https://drive.google.com/uc?id=1ryauiCoq5JZhhf1kbaulbmy2M07wRSlB" alt="Spellbound" width="300">
+<p align="center">
+  <img src="https://drive.google.com/uc?id=1ryauiCoq5JZhhf1kbaulbmy2M07wRSlB" alt="Spellbound" width="300">
+</p>
+
 
 ## Spellbound
 
@@ -21,14 +24,12 @@ This is a spelling game project intended for students. Upon loading the game,
 9. User can press the End Game button when ready to end the game.
 10. A score card will be displayed. A list of incorrectly spelt words will also be displayed.
 
-
-
 ## Purpose of solution:
 The problem statement we were given addressed the issue of the lack of engagement by students in non-stem subjects. Students feel like some subjects are heavily relied on textbooks and therefore don’t find learning enjoyable. So, we set out to create a fun, interactive game that allows students to test their spelling, expand their vocabulary, and essentially enhance their literacy skills.
 
 ## Project planning and delivery
 
-###Our project timeline
+### Our project timeline
 - Coming up with an idea
 - Establishing roles
 - Setting out the functions of the app
