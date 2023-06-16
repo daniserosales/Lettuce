@@ -26,11 +26,13 @@ hardBtn.addEventListener("click", addDefHar);
 checkBtn.addEventListener("click", checkSpelling);
 endGameBtn.addEventListener("click", endGame)
 playAgainBtn.addEventListener("click", playAgain)
+
 inputTextBox.addEventListener("keypress", (e) => {
   if (e.keyCode === 13) {
     checkSpelling();
   }
 });
+
 //resetBtn.addEventListener("click", function () {
 // location.reload();
 //});
@@ -38,8 +40,16 @@ inputTextBox.addEventListener("keypress", (e) => {
 // Disable the textbox, check button and end game button on load
 inputTextBox.classList.add("disabled")
 checkBtn.classList.add("disabled")
+endGameBtn.classList.add("disabled")
+fetch("http://localhost:3000/reset");
 
 async function randomWord(level) {
+
+  //  Clear definition and right/wrong message
+  const defi = document.querySelector('#definition');
+  defi.textContent = '';
+  const message = document.querySelector('#message');
+  message.textContent = '';
 
   switch (level) {
     case "begin":
@@ -78,6 +88,7 @@ async function randomWord(level) {
 }
 
 async function addDefBeg(e) {
+
   await beginListenWord()
   const input = inputWord;
   try {
@@ -109,6 +120,7 @@ async function beginListenWord() {
 
     window.speechSynthesis.speak(speech);
     swapEnable()
+    turnOnWard("begin")
   }
 }
 
@@ -145,6 +157,7 @@ async function interListenWord() {
 
     window.speechSynthesis.speak(speech);
     swapEnable()
+    turnOnWard("inter")
   }
 }
 
@@ -182,6 +195,7 @@ async function hardListenWord() {
 
     window.speechSynthesis.speak(speech);
     swapEnable()
+    turnOnWard("hard")
   }
 }
 
@@ -204,7 +218,7 @@ async function checkSpelling() {
       score += 3;
       allScore += 3;
     }
-    
+
   } else if (input != inputWord) {
     const defi = document.querySelector('#message');
     defi.style.color = "red";
@@ -222,13 +236,18 @@ async function checkSpelling() {
     arrIncorrectWords.push(inputWord);
     console.log(arrIncorrectWords);
   }
-     
-     setTimeout(() => {
-      const defi = document.querySelector('#message');
-      defi.innerHTML = '';
-    }, 5000);
+
+  setTimeout(() => {
+    const defi = document.querySelector('#message');
+    defi.innerHTML = '';
+  }, 5000);
 
   swapEnable()
+
+  if (endGameBtn.classList.contains("disabled")) {
+    endGameBtn.classList.remove("disabled");
+  }
+
 }
 
 
@@ -240,10 +259,12 @@ function swapEnable() {
 
     const element = elements[i]
 
-    if (element.classList.contains("disabled")) {
+    if (element.classList.contains("disabled") || element.classList.contains("turn-On")) {
       element.classList.remove("disabled");
+      element.classList.remove("turn-On");
     } else {
       element.classList.add("disabled");
+      element.classList.remove("turn-On");
     }
   }
 }
@@ -260,10 +281,14 @@ newGame.onclick = function() {
 
 function endGame(e) {
   // Pop-up appears
- 
- modal.style.display = "block";
- const addend1 = score;
- const addednd2 = allScore;
+  modal.style.display = "block";
+  const addend1 = score;
+  const addednd2 = allScore;
+
+  const defi = document.querySelector('#definition');
+  defi.textContent = '';
+  const message = document.querySelector('#message');
+  message.textContent = '';
 
   // Creating list with incorrect words from array:
   let content = document.querySelector("#content");
@@ -290,6 +315,22 @@ function endGame(e) {
    }
 }
 
+function turnOnWard(level) {
+  switch (level) {
+    case "begin":
+      beginnerBtn.classList.remove("disabled");
+      beginnerBtn.classList.add("turn-On");
+      break;
+    case "inter":
+      intermediateBtn.classList.remove("disabled");
+      intermediateBtn.classList.add("turn-On");
+      break;
+    case "hard":
+      hardBtn.classList.remove("disabled");
+      hardBtn.classList.add("turn-On");
+      break;
+  }
+}
 
 
 async function  playAgain () {
@@ -298,8 +339,8 @@ async function  playAgain () {
   // document.getElementById("endImg").style.width = "700px"
   // document.getElementById("endImg").style.height = "300px"
   // document.body.appendChild(defi);
-location.reload()
-window.scrollTo(0, 0);
-scoreCard.classList.remove("open-popup");
-   
+  location.reload()
+  window.scrollTo(0, 0);
+  scoreCard.classList.remove("open-popup");
+  await fetch("http://localhost:3000/reset");
 }
